@@ -4,8 +4,7 @@
 format: jb-book
 root: README.md
 options:  
-  numbered: True
+  numbered: False
 chapters:
 - file: git/git_intro.md
-  sections:
-  - file: markdown-notebooks.md
+- file: object detection/object_detection.ipynb

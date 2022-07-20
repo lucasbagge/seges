@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Why efficient Python? &#8212; My sample book</title>
+    <title>Efficient Tricks and Tools for developer, Data Scientists and Statisticians &#8212; Applied Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -96,7 +96,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.jpeg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Applied Data Science</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Why efficient Python?
+                    Efficient Tricks and Tools for developer, Data Scientists and Statisticians
                 </a>
             </li>
         </ul>
@@ -122,6 +122,50 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="object%20detection/object_detection.html">
    Object detection
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine%20learning/ml.html">
+   Machine Learning introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistical%20learning/sl.html">
+   Statistical Learning introduktion
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="bayes/bay.html">
+   Bayesians statistic introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes/mmm_bayes.html">
+     Media Mixed Modelling with Bayesian statistics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Mlops/mlops.html">
+   MlOps
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Mlops/airflow.html">
+     Airflow
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -278,23 +322,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-should-you-expect-from-this-book">
+   What Should You Expect From This Book?
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Why efficient Python?</h1>
+                <h1>Efficient Tricks and Tools for developer, Data Scientists and Statisticians</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-should-you-expect-from-this-book">
+   What Should You Expect From This Book?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -302,8 +383,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="why-efficient-python">
-<h1>Why efficient Python?<a class="headerlink" href="#why-efficient-python" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="efficient-tricks-and-tools-for-developer-data-scientists-and-statisticians">
+<h1>Efficient Tricks and Tools for developer, Data Scientists and Statisticians<a class="headerlink" href="#efficient-tricks-and-tools-for-developer-data-scientists-and-statisticians" title="Permalink to this headline">#</a></h1>
+<p>Why efficient? Because using the moderen data stack more efficiently will make your code more readable and run more efficiently.</p>
+<p>The goal of this book is to spread the awareness of efficient ways to do:</p>
+<ul class="simple">
+<li><p>Using Git for version control.</p></li>
+<li><p>Support the gap between Statistical- and Machine Learning.</p></li>
+<li><p>Building mlops platform.</p></li>
+</ul>
+<section id="what-should-you-expect-from-this-book">
+<h2>What Should You Expect From This Book?<a class="headerlink" href="#what-should-you-expect-from-this-book" title="Permalink to this headline">#</a></h2>
+<p>This book expects you to have some basic knowledge of Programming, statistic, probability and data science.</p>
+<p>You should also expect bite-size code snippets for each section. This will allow you to obtain multiple pieces of knowledge in fewer than one minute. I included the link to the resources for every tools introduced in case you want to explore them further.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>

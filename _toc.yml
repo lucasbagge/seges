@@ -8,3 +8,11 @@ options:
 chapters:
 - file: git/git_intro.md
 - file: object detection/object_detection.ipynb
+- file: machine learning/ml.md
+- file: statistical learning/sl.md
+- file: bayes/bay.md
+  sections:
+  - file: bayes/mmm_bayes.ipynb
+- file: Mlops/mlops.md
+  sections:
+  - file: Mlops/airflow.ipynb

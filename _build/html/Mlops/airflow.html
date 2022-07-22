@@ -351,12 +351,56 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whats-airflow-and-whys-it-so-good">
+   What’s Airflow, and why’s it so good?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dags-tasks-and-operators">
+   DAGs, Tasks and Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-building-a-joke-collector-with-airflow">
+   Tutorial: building a joke collector with Airflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fully-refreshing-your-instance">
+   Fully refreshing your instance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taskflow">
+   TaskFlow
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -368,6 +412,39 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whats-airflow-and-whys-it-so-good">
+   What’s Airflow, and why’s it so good?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dags-tasks-and-operators">
+   DAGs, Tasks and Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-building-a-joke-collector-with-airflow">
+   Tutorial: building a joke collector with Airflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fully-refreshing-your-instance">
+   Fully refreshing your instance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taskflow">
+   TaskFlow
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -377,6 +454,198 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="airflow">
 <h1>Airflow<a class="headerlink" href="#airflow" title="Permalink to this headline">#</a></h1>
+<p>building end-to-end data science solutions means developing data collection, feature engineering, model building and model serving processes. It’s a lot of stuff to stay on top of, right? To keep myself sane, I use Airflow to automate tasks with simple, reusable pieces of code for frequently repeated elements of projects, for example:</p>
+<ul class="simple">
+<li><p>Web scraping</p></li>
+<li><p>ETL</p></li>
+<li><p>Database management</p></li>
+<li><p>Feature building and data validation</p></li>
+</ul>
+<section id="whats-airflow-and-whys-it-so-good">
+<h2>What’s Airflow, and why’s it so good?<a class="headerlink" href="#whats-airflow-and-whys-it-so-good" title="Permalink to this headline">#</a></h2>
+<p>Airflow is a Python based open source orchestration tool developed in-house by Airbnb in 2014 to help their internal workflows.</p>
+<p>What makes it my go to? In short, it’s free, in pure Python, and it has a logical structure as well as a slick UI for management, logging and debugging. This means that with a bit of learning, it becomes the easiest way to take your scripts that do the stuff above and put it on a regular schedule.</p>
+<p>In my opinion, the best part about Airflow is its elegant design of its <em>DAGs</em>, <em>Tasks</em> and <em>Operators</em>, making it approachable for anyone familiar with Python. It makes any kind of workflow possible.</p>
+</section>
+<section id="dags-tasks-and-operators">
+<h2>DAGs, Tasks and Operators<a class="headerlink" href="#dags-tasks-and-operators" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p><strong>DAGs</strong> —short for directed acyclic graphs. This is a collection of Tasks that are ordered to reflect the functionality, requirements and dependencies of the workflow. Think of DAGs as your jobs or processes to run, such as scraping a website.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Tasks</strong> — these are the smaller pieces of functionality that make up DAGs. For example, a DAG could scrape a website once a day, and one of the tasks could check that the website still exists. Then you can define the DAG so that e.g. emails you (one task) if it no longer exists, or scrapes the site it does (a different task).</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Operators</strong> — various Airflow built-in Python classes that can be executed by a task, e.g. PythonOperator for python scripts and BashOperator for bash scripts</p>
+</div></blockquote>
+<p><img alt="title" src="../_images/airflowflow.png" /></p>
+<blockquote>
+<div><p>Workers — Execute the assigned tasks</p>
+</div></blockquote>
+<blockquote>
+<div><p>Scheduler — Responsible for adding the necessary tasks to the queue</p>
+</div></blockquote>
+<blockquote>
+<div><p>Web server — HTTP Server provides access to DAG/task status information</p>
+</div></blockquote>
+<blockquote>
+<div><p>Database — Contains information about the status of tasks, DAGs, Variables, connections, etc.</p>
+</div></blockquote>
+<p>It’s a lot to get into without a concrete example — so keep some of that in mind and let’s get building!</p>
+</section>
+<section id="tutorial-building-a-joke-collector-with-airflow">
+<h2>Tutorial: building a joke collector with Airflow<a class="headerlink" href="#tutorial-building-a-joke-collector-with-airflow" title="Permalink to this headline">#</a></h2>
+<p>We’re going to build a simple Airflow DAG that hits the Chuck Norris joke API once a day and saves the result to a local csv. I’ll be closely following the quick-start Docker guide in the Airflow docs to get the environment up and running, then we’ll add in our joke scraping DAG.</p>
+<p>First things first, clone my GitHub codebase to your machine. All you need is Docker, so make sure you have that installed too.
+This codebase contains two scripts to get your own Airflow instance up and running through Docker. First, open up a bash terminal (windows users should use git bash) in the project root’s directory and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">airflow</span><span class="o">-</span><span class="n">init</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Which simply runs these bash commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">./</span><span class="n">data</span> <span class="o">./</span><span class="n">dags</span> <span class="o">./</span><span class="n">logs</span> <span class="o">./</span><span class="n">plugins</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;AIRFLOW_UID=$(id -u)</span><span class="se">\n</span><span class="s2">AIRFLOW_GID=0&quot;</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">env</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="n">airflow</span><span class="o">-</span><span class="n">init</span>
+</pre></div>
+</div>
+<p>The first and second line create some additional folders and an env file for the initialisation, and the last one performs the initialisation.</p>
+<p>Next, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">airflow</span><span class="o">-</span><span class="n">up</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This builds and runs the web server, worker and Postgres database as separate docker containers, as per the docker-compose.yaml file in the repo. This is the official supplied Airflow Docker development file, it contains a lot of detail that is not super important for the purposes of this tutorial. We just want to get a development environment up and running.</p>
+<p>You should now be able to access your Airflow instance on localhost:8080.</p>
+<p>For this setup, the username and password are both airflow.</p>
+<p>We’re all set up to add our DAG now. Create a new file called dag_joke_collector.py in the dags folder and add this snippet of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonVirtualenvOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.utils.dates</span> <span class="kn">import</span> <span class="n">days_ago</span>
+
+<span class="k">def</span> <span class="nf">callable_virtualenv_collect_joke</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+    <span class="kn">from</span> <span class="nn">csv</span> <span class="kn">import</span> <span class="n">DictWriter</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://official-joke-api.appspot.com/random_joke&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Failed with response code </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">joke_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;jokes.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">write_obj</span><span class="p">:</span>
+            <span class="n">field_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">,</span><span class="s1">&#39;setup&#39;</span><span class="p">,</span><span class="s1">&#39;punchline&#39;</span><span class="p">]</span>
+            <span class="n">dict_writer</span> <span class="o">=</span> <span class="n">DictWriter</span><span class="p">(</span><span class="n">write_obj</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">field_names</span><span class="p">)</span>
+            <span class="n">dict_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">joke_dict</span><span class="p">)</span>
+    
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;airflow&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;airflow@example.com&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;email_on_failure&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;email_on_retry&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;retries&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;retry_delay&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s1">&#39;joke_collector&#39;</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;A DAG to collect a joke from a random joke generator API&#39;</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;automationwithairflow&#39;</span><span class="p">],</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="n">joke_collector_task</span> <span class="o">=</span> <span class="n">PythonVirtualenvOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;joke_collector_task&quot;</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">callable_virtualenv_collect_joke</span><span class="p">,</span>
+        <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;requests==2.25.1&quot;</span><span class="p">],</span>
+        <span class="n">system_site_packages</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">joke_collector_task</span>
+</pre></div>
+</div>
+<p>We’re going to walk through this DAG step-by-step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonVirtualenvOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.utils.dates</span> <span class="kn">import</span> <span class="n">days_ago</span>
+</pre></div>
+</div>
+<p>Starting from the top, from the airflow package (which will be already installed in our worker’s pip environment for us) we import DAG and the PythonVirtualenvOperator operator from <code class="docutils literal notranslate"><span class="pre">airflow.operators.python</span></code> . The DAG module is the main API for defining your DAG , as you’ll see later, when you use this, the web server will automatically pick up objects defined using this API and add it to your runnable DAGs in the UI.
+We also import a couple of time-related helper functions. Note that we can use the core python package datetime to help us define our DAGs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callable_virtualenv_collect_joke</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+    <span class="kn">from</span> <span class="nn">csv</span> <span class="kn">import</span> <span class="n">DictWriter</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://official-joke-api.appspot.com/random_joke&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Failed with response code </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">joke_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;jokes.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">write_obj</span><span class="p">:</span>
+            <span class="n">field_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">,</span><span class="s1">&#39;setup&#39;</span><span class="p">,</span><span class="s1">&#39;punchline&#39;</span><span class="p">]</span>
+            <span class="n">dict_writer</span> <span class="o">=</span> <span class="n">DictWriter</span><span class="p">(</span><span class="n">write_obj</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">field_names</span><span class="p">)</span>
+            <span class="n">dict_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">joke_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we define our callable Python function. This is the required structure when using the PythonVirtualenvOperator as part of a task. We import the packages that will be in the virtual env within the function itself. This lets us use packages like requests that aren’t installed by default into the Airflow worker container, but are passed into the PythonVirtualenvOperator to install at runtime.</p>
+<p>Then from line 5 onwards we have the code that hits the joke API and writes it down locally to jokes.csv . Note that none of this will actually be run if we were to, say, run the script from the command line. This is all configuration as code — we are defining in code how we want the web server to implement our DAG.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;airflow&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;airflow@example.com&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;email_on_failure&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;email_on_retry&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;retries&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;retry_delay&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The next section is a simply defining some default parameters for our DAG. Most are self-explanatory, note that the ‘owner’ is the airflow user we used to log into the UI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s1">&#39;joke_collector&#39;</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;A DAG to collect a joke from a random joke generator API&#39;</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;automationwithairflow&#39;</span><span class="p">],</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="n">joke_collector_task</span> <span class="o">=</span> <span class="n">PythonVirtualenvOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;joke_collector_task&quot;</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">callable_virtualenv_collect_joke</span><span class="p">,</span>
+        <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;requests==2.25.1&quot;</span><span class="p">],</span>
+        <span class="n">system_site_packages</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">joke_collector_task</span>
+</pre></div>
+</div>
+<p>We finally have the definition of the DAG. Using the with structure as you would when opening a file, we define a DAG with the name joke_collector, the default arguments we defined above, a quick description, the schedule interval, start date and tags.</p>
+<p>With a schedule interval of 1 days and a start date of 1 days_ago which, by Airflow’s scheduling and triggers definition, will run automatically once upon initialisation, then once a day at midnight there on. If we defined the start date as 10 days ago, we would actually see it run 10 times upon initialisation, then once a day thereafter. Bit odd, right?
+This is how Airflow backfills based on the start date. It’s a bit of a gotcha at first, but for more complex, time related tasks it makes a lot of sense. For example, you might hit an API or a database based on a sliding time window to extract data in batches, and in order to perform a re-run you may define the start date as several months ago, then run the DAG with the date as a parameter, for each day leading up to today.</p>
+<p>Let’s look at the joke_collector_task definition now. Remember how DAGs are made of Tasks, which use Operators to define what the task is to do at runtime. So this task will simply create a PythonVirtualenvOperator and run the code in the callable_virtualenv_collect_joke function. We pass in the requirements (just the requests package for this example) too.
+Finally, since we just want to run that task, we need to add the joke_collector_task at the end.</p>
+<p>Refresh your UI and you should now see the your joke_collector and a second DAG!</p>
+<p><img alt="title" src="../_images/dags.png" /></p>
+<p>DAGs start ‘paused’ by default, you’ll need to unpause it by clicking the far left button.</p>
+<p>This should kick off that aforementioned initial one time run. Wait a little bit — it doesn’t run as quickly as it would in a py script or notebook.</p>
+<p><img alt="title" src="../_images/dagpau.png" /></p>
+<p>Click on the joke_collector DAG to view more details about the run.</p>
+<p><img alt="title" src="../_images/dagsta.png" /></p>
+<p>If all has gone well, you’ll see small dark green box indicating a successful run. You can hover over the task to view more details:</p>
+<p><img alt="title" src="../_images/dagfal.png" /></p>
+<p>I like to use this to see the logs produced by the Airflow worker when running the task. Any print/logging statements you add in python will be seen here, too.</p>
+<p><img alt="title" src="../_images/daglogs.png" /></p>
+</section>
+<section id="fully-refreshing-your-instance">
+<h2>Fully refreshing your instance<a class="headerlink" href="#fully-refreshing-your-instance" title="Permalink to this headline">#</a></h2>
+<p>Run the following to fully refresh your docker containers and Airflow related data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">docker</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">refresh</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+<section id="taskflow">
+<h2>TaskFlow<a class="headerlink" href="#taskflow" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

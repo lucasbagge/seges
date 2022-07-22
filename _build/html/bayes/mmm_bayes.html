@@ -378,6 +378,690 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="media-mixed-modelling-with-bayesian-statistics">
 <h1>Media Mixed Modelling with Bayesian statistics<a class="headerlink" href="#media-mixed-modelling-with-bayesian-statistics" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use poetry add `cat requirements.txt` for installain in req</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;bmh&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;bmh&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymc3&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spend_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/mmm data.xlsx&#39;</span><span class="p">)</span>
+
+<span class="n">spend_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>channel_1</th>
+      <th>channel_2</th>
+      <th>channel_3</th>
+      <th>channel_4</th>
+      <th>channel_5</th>
+      <th>channel_6</th>
+      <th>sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.948187</td>
+      <td>13.224965</td>
+      <td>14.833617</td>
+      <td>14.784618</td>
+      <td>13.393616</td>
+      <td>11.606138</td>
+      <td>119.169990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.679996</td>
+      <td>11.804500</td>
+      <td>12.556677</td>
+      <td>11.776853</td>
+      <td>9.704325</td>
+      <td>7.234834</td>
+      <td>107.297727</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.677359</td>
+      <td>13.693765</td>
+      <td>15.414623</td>
+      <td>15.479537</td>
+      <td>14.268762</td>
+      <td>12.544458</td>
+      <td>127.984427</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.362856</td>
+      <td>9.569667</td>
+      <td>8.876226</td>
+      <td>6.800466</td>
+      <td>3.751297</td>
+      <td>0.250574</td>
+      <td>72.891404</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8.883413</td>
+      <td>4.852888</td>
+      <td>1.427800</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>65.252818</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_2&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_3&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_4&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_5&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_6&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9010a37850&gt;]
+</pre></div>
+</div>
+<img alt="../_images/mmm_bayes_3_1.png" src="../_images/mmm_bayes_3_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span> <span class="o">+</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="o">+</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">+</span> 
+         <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_3&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">+</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_4&#39;</span><span class="p">]</span> <span class="o">*</span><span class="mf">1.5</span> <span class="o">+</span> 
+         <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_5&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">+</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_6&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.95</span> <span class="o">+</span>
+         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_1&#39;</span><span class="p">]))</span>
+  <span class="p">)</span>
+
+<span class="n">sales</span> <span class="o">=</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span> <span class="c1"># Use this to replicate my results exactly</span>
+<span class="n">spend_data</span> <span class="o">=</span> <span class="n">spend_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spend_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>channel_1</th>
+      <th>channel_2</th>
+      <th>channel_3</th>
+      <th>channel_4</th>
+      <th>channel_5</th>
+      <th>channel_6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.948187</td>
+      <td>13.224965</td>
+      <td>14.833617</td>
+      <td>14.784618</td>
+      <td>13.393616</td>
+      <td>11.606138</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.679996</td>
+      <td>11.804500</td>
+      <td>12.556677</td>
+      <td>11.776853</td>
+      <td>9.704325</td>
+      <td>7.234834</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.677359</td>
+      <td>13.693765</td>
+      <td>15.414623</td>
+      <td>15.479537</td>
+      <td>14.268762</td>
+      <td>12.544458</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.362856</td>
+      <td>9.569667</td>
+      <td>8.876226</td>
+      <td>6.800466</td>
+      <td>3.751297</td>
+      <td>0.250574</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8.883413</td>
+      <td>4.852888</td>
+      <td>1.427800</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     119.169990
+1     107.297727
+2     127.984427
+3      72.891404
+4      65.252818
+         ...    
+95    266.526427
+96    277.599515
+97    276.675519
+98    240.246990
+99    223.424473
+Name: sales, Length: 100, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spend_data_with_c</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">spend_data</span><span class="p">)</span>
+<span class="n">est</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">sales</span><span class="p">,</span> <span class="n">spend_data_with_c</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>sales</td>      <th>  R-squared:         </th> <td>   0.994</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.994</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   2732.</td> 
+</tr>
+<tr>
+  <th>Date:</th>             <td>Wed, 20 Jul 2022</td> <th>  Prob (F-statistic):</th> <td>3.12e-102</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>23:30:21</td>     <th>  Log-Likelihood:    </th> <td> -295.00</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   604.0</td> 
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    93</td>      <th>  BIC:               </th> <td>   622.2</td> 
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     6</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th>     <td>   39.6028</td> <td>    1.512</td> <td>   26.199</td> <td> 0.000</td> <td>   36.601</td> <td>   42.605</td>
+</tr>
+<tr>
+  <th>channel_1</th> <td>    1.1283</td> <td>    0.168</td> <td>    6.710</td> <td> 0.000</td> <td>    0.794</td> <td>    1.462</td>
+</tr>
+<tr>
+  <th>channel_2</th> <td>    0.6606</td> <td>    0.369</td> <td>    1.788</td> <td> 0.077</td> <td>   -0.073</td> <td>    1.394</td>
+</tr>
+<tr>
+  <th>channel_3</th> <td>    0.4910</td> <td>    0.517</td> <td>    0.949</td> <td> 0.345</td> <td>   -0.536</td> <td>    1.518</td>
+</tr>
+<tr>
+  <th>channel_4</th> <td>    2.5278</td> <td>    0.704</td> <td>    3.588</td> <td> 0.001</td> <td>    1.129</td> <td>    3.927</td>
+</tr>
+<tr>
+  <th>channel_5</th> <td>   -0.8799</td> <td>    0.859</td> <td>   -1.025</td> <td> 0.308</td> <td>   -2.585</td> <td>    0.825</td>
+</tr>
+<tr>
+  <th>channel_6</th> <td>    1.9833</td> <td>    0.500</td> <td>    3.964</td> <td> 0.000</td> <td>    0.990</td> <td>    2.977</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 1.712</td> <th>  Durbin-Watson:     </th> <td>   2.276</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.425</td> <th>  Jarque-Bera (JB):  </th> <td>   1.707</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.305</td> <th>  Prob(JB):          </th> <td>   0.426</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.803</td> <th>  Cond. No.          </th> <td>    133.</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">intercept</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;Intercept&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_1&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_2&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_3&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_4&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_5&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_6&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Likelihood (sampling distribution) of observations</span>
+    <span class="n">Y_obs</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;Y_obs&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="n">sales</span><span class="p">)</span>
+
+    <span class="c1"># pm.glm.GLM.from_formula(&quot;y ~ x&quot;, data)</span>
+    <span class="n">ols_trace</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pk/f_w9xjw57l3_b9hlyplw1pym0000gn/T/ipykernel_48947/1666377863.py:13: FutureWarning: In v4.0, pm.sample will return an `arviz.InferenceData` object instead of a `MultiTrace` by default. You can pass return_inferencedata=True or return_inferencedata=False to be safe and silence this warning.
+  ols_trace = pm.sample(2000, cores=2)
+Auto-assigning NUTS sampler...
+Initializing NUTS using jitter+adapt_diag...
+Multiprocess sampling (2 chains in 2 jobs)
+NUTS: [x, Intercept, sigma]
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div><div class="output text_html">
+<div>
+  <progress value='6000' class='' max='6000' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [6000/6000 00:29<00:00 Sampling 2 chains, 71 divergences]
+</div>
+</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 2 chains for 1_000 tune and 2_000 draw iterations (2_000 + 4_000 draws total) took 35 seconds.
+There were 2 divergences after tuning. Increase `target_accept` or reparameterize.
+There were 69 divergences after tuning. Increase `target_accept` or reparameterize.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_trace_df</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">trace_to_dataframe</span><span class="p">(</span><span class="n">ols_trace</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">ols_trace_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">res</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_1&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_2&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_3&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_4&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_5&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_6&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>39.374227</td>
+    </tr>
+    <tr>
+      <th>beta_1</th>
+      <td>1.147478</td>
+    </tr>
+    <tr>
+      <th>beta_2</th>
+      <td>0.638136</td>
+    </tr>
+    <tr>
+      <th>beta_3</th>
+      <td>0.502164</td>
+    </tr>
+    <tr>
+      <th>beta_4</th>
+      <td>2.524303</td>
+    </tr>
+    <tr>
+      <th>beta_5</th>
+      <td>-0.866982</td>
+    </tr>
+    <tr>
+      <th>beta_6</th>
+      <td>1.973550</td>
+    </tr>
+    <tr>
+      <th>sigma</th>
+      <td>4.405032</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">intercept</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;Intercept&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">BoundedNormal</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Bound</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">BoundedNormal</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_1&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_2&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_3&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_4&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_5&#39;</span><span class="p">]</span> \
+                   <span class="o">+</span> <span class="n">beta</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="n">spend_data</span><span class="p">[</span><span class="s1">&#39;channel_6&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Likelihood (sampling distribution) of observations</span>
+    <span class="n">Y_obs</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;Y_obs&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="n">sales</span><span class="p">)</span>
+
+
+    <span class="c1"># pm.glm.GLM.from_formula(&quot;y ~ x&quot;, data)</span>
+    <span class="n">bounded_trace</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pk/f_w9xjw57l3_b9hlyplw1pym0000gn/T/ipykernel_48947/4005999278.py:18: FutureWarning: In v4.0, pm.sample will return an `arviz.InferenceData` object instead of a `MultiTrace` by default. You can pass return_inferencedata=True or return_inferencedata=False to be safe and silence this warning.
+  bounded_trace = pm.sample(2000, cores=2)
+Auto-assigning NUTS sampler...
+Initializing NUTS using jitter+adapt_diag...
+Multiprocess sampling (2 chains in 2 jobs)
+NUTS: [x, Intercept, sigma]
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div><div class="output text_html">
+<div>
+  <progress value='6000' class='' max='6000' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [6000/6000 00:18<00:00 Sampling 2 chains, 1,426 divergences]
+</div>
+</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 2 chains for 1_000 tune and 2_000 draw iterations (2_000 + 4_000 draws total) took 23 seconds.
+There were 349 divergences after tuning. Increase `target_accept` or reparameterize.
+There were 1077 divergences after tuning. Increase `target_accept` or reparameterize.
+The acceptance probability does not match the target. It is 0.41086591115325594, but should be close to 0.8. Try to increase the number of tuning steps.
+The rhat statistic is larger than 1.2 for some parameters.
+The estimated number of effective samples is smaller than 200 for some parameters.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bounded_trace_df</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">trace_to_dataframe</span><span class="p">(</span><span class="n">bounded_trace</span><span class="p">)</span>
+<span class="n">res</span><span class="o">=</span> <span class="n">bounded_trace_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">res</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_1&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_2&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_3&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_4&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_5&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_6&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>39.653515</td>
+    </tr>
+    <tr>
+      <th>beta_1</th>
+      <td>4.397311</td>
+    </tr>
+    <tr>
+      <th>beta_2</th>
+      <td>1.128184</td>
+    </tr>
+    <tr>
+      <th>beta_3</th>
+      <td>0.566836</td>
+    </tr>
+    <tr>
+      <th>beta_4</th>
+      <td>0.880964</td>
+    </tr>
+    <tr>
+      <th>beta_5</th>
+      <td>1.552468</td>
+    </tr>
+    <tr>
+      <th>beta_6</th>
+      <td>0.521011</td>
+    </tr>
+    <tr>
+      <th>sigma</th>
+      <td>1.246430</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_means</span> <span class="o">=</span> <span class="n">bounded_trace_df</span><span class="p">[[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span><span class="s1">&#39;x__0&#39;</span><span class="p">,</span><span class="s1">&#39;x__1&#39;</span><span class="p">,</span><span class="s1">&#39;x__2&#39;</span><span class="p">,</span><span class="s1">&#39;x__3&#39;</span><span class="p">,</span><span class="s1">&#39;x__4&#39;</span><span class="p">,</span> <span class="s1">&#39;x__5&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="n">ols_means</span> <span class="o">=</span> <span class="n">ols_trace_df</span><span class="p">[[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span><span class="s1">&#39;x__0&#39;</span><span class="p">,</span><span class="s1">&#39;x__1&#39;</span><span class="p">,</span><span class="s1">&#39;x__2&#39;</span><span class="p">,</span><span class="s1">&#39;x__3&#39;</span><span class="p">,</span><span class="s1">&#39;x__4&#39;</span><span class="p">,</span> <span class="s1">&#39;x__5&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Truth&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]),</span> <span class="s1">&#39;ols&#39;</span><span class="p">:</span><span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;bayes_ols&#39;</span><span class="p">:</span><span class="n">ols_means</span><span class="p">,</span> <span class="s1">&#39;bounded&#39;</span><span class="p">:</span><span class="n">bt_means</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Truth</th>
+      <th>ols</th>
+      <th>bayes_ols</th>
+      <th>bounded</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>const</th>
+      <td>20.00</td>
+      <td>39.602849</td>
+      <td>39.374227</td>
+      <td>39.653515</td>
+    </tr>
+    <tr>
+      <th>channel_1</th>
+      <td>1.10</td>
+      <td>1.128318</td>
+      <td>1.147478</td>
+      <td>1.128184</td>
+    </tr>
+    <tr>
+      <th>channel_2</th>
+      <td>0.70</td>
+      <td>0.660571</td>
+      <td>0.638136</td>
+      <td>0.566836</td>
+    </tr>
+    <tr>
+      <th>channel_3</th>
+      <td>0.80</td>
+      <td>0.491001</td>
+      <td>0.502164</td>
+      <td>0.880964</td>
+    </tr>
+    <tr>
+      <th>channel_4</th>
+      <td>1.50</td>
+      <td>2.527781</td>
+      <td>2.524303</td>
+      <td>1.552468</td>
+    </tr>
+    <tr>
+      <th>channel_5</th>
+      <td>0.80</td>
+      <td>-0.879944</td>
+      <td>-0.866982</td>
+      <td>0.521011</td>
+    </tr>
+    <tr>
+      <th>channel_6</th>
+      <td>0.95</td>
+      <td>1.983264</td>
+      <td>1.973550</td>
+      <td>1.246430</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

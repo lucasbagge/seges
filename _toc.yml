@@ -16,3 +16,6 @@ chapters:
 - file: Mlops/mlops.md
   sections:
   - file: Mlops/airflow.ipynb
+- file: Data Science rols/Datarols.md
+  sections:
+  - file: Data Science rols/data engineer.md

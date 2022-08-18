@@ -50,8 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to SQL" href="../SQL/Introduction%20to%20SQL.html" />
     <link rel="prev" title="Data Science rols" href="Datarols.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -180,6 +183,23 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Data Engineer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SQL/Introduction%20to%20SQL.html">
+   Introduction to SQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../SQL/Explanatory%20Data%20Analysis%20in%20SQL.html">
+     Exploratory Data Analysis in SQL
     </a>
    </li>
   </ul>
@@ -370,6 +390,78 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#introduction-to-shell">
      Introduction to Shell
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-move-up-a-directory">
+       How can I move up a directory?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-copy-files">
+       How can I copy files?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-move-a-file">
+       How can I move a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-delete-files">
+       How can I delete files?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-view-a-file-s-contents">
+       How can I view a file’s contents?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-control-what-commands-do">
+       How can I control what commands do?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-select-columns-from-a-file">
+       How can I select columns from a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-select-lines-containing-specific-values">
+       How can I select lines containing specific values?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-store-a-command-s-output-in-a-file">
+       How can I store a command’s output in a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-print-a-variable-s-value">
+       How can I print a variable’s value?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-repeat-a-command-many-times">
+       How can I repeat a command many times?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-run-many-commands-in-a-single-loop">
+       How can I run many commands in a single loop?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-do-many-things-in-a-single-loop">
+       How can I do many things in a single loop?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-new-tools">
+     Creating new tools
+    </a>
    </li>
   </ul>
  </li>
@@ -401,6 +493,78 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#introduction-to-shell">
      Introduction to Shell
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-move-up-a-directory">
+       How can I move up a directory?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-copy-files">
+       How can I copy files?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-move-a-file">
+       How can I move a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-delete-files">
+       How can I delete files?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-view-a-file-s-contents">
+       How can I view a file’s contents?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-control-what-commands-do">
+       How can I control what commands do?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-select-columns-from-a-file">
+       How can I select columns from a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-select-lines-containing-specific-values">
+       How can I select lines containing specific values?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-store-a-command-s-output-in-a-file">
+       How can I store a command’s output in a file?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-print-a-variable-s-value">
+       How can I print a variable’s value?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-repeat-a-command-many-times">
+       How can I repeat a command many times?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-run-many-commands-in-a-single-loop">
+       How can I run many commands in a single loop?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-i-do-many-things-in-a-single-loop">
+       How can I do many things in a single loop?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-new-tools">
+     Creating new tools
+    </a>
    </li>
   </ul>
  </li>
@@ -420,6 +584,143 @@ title="Print to PDF"
 <h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h2>
 <section id="introduction-to-shell">
 <h3>Introduction to Shell<a class="headerlink" href="#introduction-to-shell" title="Permalink to this headline">#</a></h3>
+<p>Find you way around filesystem you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span> <span class="c1"># (short for &quot;print working directory&quot;).</span>
+</pre></div>
+</div>
+<p>An absolute path is like a latitude and longitude: it has the same value no matter where you are. A relative path, on the other hand, specifies a location starting from where you are: it’s like saying “20 kilometers north”.</p>
+<p>As examples:</p>
+<ul class="simple">
+<li><p>If you are in the directory /home/repl, the relative path seasonal specifies the same directory as the absolute path /home/repl/seasonal.</p></li>
+<li><p>If you are in the directory /home/repl/seasonal, the relative path winter.csv specifies the same file as the absolute path /home/repl/seasonal/winter.csv.
+The shell decides if a path is absolute or relative by looking at its first character: If it begins with /, it is absolute. If it does not begin with /, it is relative.</p></li>
+</ul>
+<p>Just as you can move around in a file browser by double-clicking on folders, you can move around in the filesystem using the command cd (which stands for “change directory”).</p>
+<section id="how-can-i-move-up-a-directory">
+<h4>How can I move up a directory?<a class="headerlink" href="#how-can-i-move-up-a-directory" title="Permalink to this headline">#</a></h4>
+<p>The parent of a directory is the directory above it. For example, /home is the parent of /home/repl, and /home/repl is the parent of /home/repl/seasonal. You can always give the absolute path of your parent directory to commands like cd and ls. More often, though, you will take advantage of the fact that the special path .. (two dots with no spaces) means “the directory above the one I’m currently in”. If you are in /home/repl/seasonal, then cd .. moves you up to /home/repl. If you use cd .. once again, it puts you in /home. One more cd .. puts you in the root directory /, which is the very top of the filesystem. (Remember to put a space between cd and .. - it is a command and a path, not a single four-letter command.)</p>
+<p>A single dot on its own, ., always means “the current directory”, so ls on its own and ls . do the same thing, while cd . has no effect (because it moves you into the directory you’re currently in).</p>
+<p>One final special path is ~ (the tilde character), which means “your home directory”, such as /home/repl. No matter where you are, ls ~ will always list the contents of your home directory, and cd ~ will always take you home.</p>
+</section>
+<section id="how-can-i-copy-files">
+<h4>How can I copy files?<a class="headerlink" href="#how-can-i-copy-files" title="Permalink to this headline">#</a></h4>
+<p>You will often want to copy files, move them into other directories to organize them, or rename them. One command to do this is cp, which is short for “copy”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">original</span><span class="o">.</span><span class="n">txt</span> <span class="n">duplicate</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>creates a copy of original.txt called duplicate.txt.</p>
+</section>
+<section id="how-can-i-move-a-file">
+<h4>How can I move a file?<a class="headerlink" href="#how-can-i-move-a-file" title="Permalink to this headline">#</a></h4>
+<p>mv moves it from one directory to another, just as if you had dragged it in a graphical file browser</p>
+<p>mv can also be used to rename files.</p>
+</section>
+<section id="how-can-i-delete-files">
+<h4>How can I delete files?<a class="headerlink" href="#how-can-i-delete-files" title="Permalink to this headline">#</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">rm</span></code> for this.</p>
+</section>
+<section id="how-can-i-view-a-file-s-contents">
+<h4>How can I view a file’s contents?<a class="headerlink" href="#how-can-i-view-a-file-s-contents" title="Permalink to this headline">#</a></h4>
+<p>Before you rename or delete files, you may want to have a look at their contents. The simplest way to do this is with cat, which just prints the contents of files onto the screen. (Its name is short for “concatenate”, meaning “to link things together”, since it will print all the files whose names you give it, one after the other.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="how-can-i-control-what-commands-do">
+<h4>How can I control what commands do?<a class="headerlink" href="#how-can-i-control-what-commands-do" title="Permalink to this headline">#</a></h4>
+<p>You won’t always want to look at the first 10 lines of a file, so the shell lets you change head’s behavior by giving it a command-line flag (or just “flag” for short). If you run the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="n">seasonal</span><span class="o">/</span><span class="n">summer</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>head will only display the first three lines of the file. If you run head -n 100, it will display the first 100 (assuming there are that many), and so on.</p>
+<p>A flag’s name usually indicates its purpose (for example, -n is meant to signal “number of lines”). Command flags don’t have to be a - followed by a single letter, but it’s a widely-used convention.</p>
+<p>Note: it’s considered good style to put all flags before any filenames, so in this course, we only accept answers that do that.</p>
+<p>How can I list everything below a directory?</p>
+<p>In order to see everything underneath a directory, no matter how deeply nested it is, you can give ls the flag -R (which means “recursive”). If you use ls -R in your home directory, you will see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">R</span>
+<span class="n">backup</span>          <span class="n">course</span><span class="o">.</span><span class="n">txt</span>      <span class="n">people</span>          <span class="n">seasonal</span>
+
+<span class="o">./</span><span class="n">backup</span><span class="p">:</span>
+
+<span class="o">./</span><span class="n">people</span><span class="p">:</span>
+<span class="n">agarwal</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="o">./</span><span class="n">seasonal</span><span class="p">:</span>
+<span class="n">autumn</span><span class="o">.</span><span class="n">csv</span>      <span class="n">spring</span><span class="o">.</span><span class="n">csv</span>      <span class="n">summer</span><span class="o">.</span><span class="n">csv</span>      <span class="n">winter</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>This shows every file and directory in the current level, then everything in each sub-directory, and so on.</p>
+</section>
+<section id="how-can-i-select-columns-from-a-file">
+<h4>How can I select columns from a file?<a class="headerlink" href="#how-can-i-select-columns-from-a-file" title="Permalink to this headline">#</a></h4>
+<p>head and tail let you select rows from a text file. If you want to select columns, you can use the command cut. It has several options (use man cut to explore them), but the most common is something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">-</span><span class="n">f</span> <span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span> <span class="o">-</span><span class="n">d</span> <span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>which means “select columns 2 through 5 and columns 8, using comma as the separator”. cut uses -f (meaning “fields”) to specify columns and -d (meaning “delimiter”) to specify the separator. You need to specify the latter because some files may use spaces, tabs, or colons to separate columns.</p>
+</section>
+<section id="how-can-i-select-lines-containing-specific-values">
+<h4>How can I select lines containing specific values?<a class="headerlink" href="#how-can-i-select-lines-containing-specific-values" title="Permalink to this headline">#</a></h4>
+<p>head and tail select rows, cut selects columns, and grep selects lines according to what they contain. In its simplest form, grep takes a piece of text followed by one or more filenames and prints all of the lines in those files that contain that text. For example, grep bicuspid seasonal/winter.csv prints lines from winter.csv that contain “bicuspid”.</p>
+<p>grep can search for patterns as well; we will explore those in the next course. What’s more important right now is some of grep’s more common flags:</p>
+<p>-c: print a count of matching lines rather than the lines themselves
+-h: do not print the names of files when searching multiple files
+-i: ignore case (e.g., treat “Regression” and “regression” as matches)
+-l: print the names of files that contain matches, not the matches
+-n: print line numbers for matching lines
+-v: invert the match, i.e., only show lines that don’t match</p>
+</section>
+<section id="how-can-i-store-a-command-s-output-in-a-file">
+<h4>How can I store a command’s output in a file?<a class="headerlink" href="#how-can-i-store-a-command-s-output-in-a-file" title="Permalink to this headline">#</a></h4>
+<p>All of the tools you have seen so far let you name input files. Most don’t have an option for naming an output file because they don’t need one. Instead, you can use redirection to save any command’s output anywhere you want. If you run this command:</p>
+<p>head -n 5 seasonal/summer.csv
+it prints the first 5 lines of the summer data on the screen. If you run this command instead:</p>
+<p>head -n 5 seasonal/summer.csv &gt; top.csv
+nothing appears on the screen. Instead, head’s output is put in a new file called top.csv. You can take a look at that file’s contents using cat:</p>
+<p>cat top.csv
+The greater-than sign &gt; tells the shell to redirect head’s output to a file. It isn’t part of the head command; instead, it works with every shell command that produces output.</p>
+</section>
+<section id="how-can-i-print-a-variable-s-value">
+<h4>How can I print a variable’s value?<a class="headerlink" href="#how-can-i-print-a-variable-s-value" title="Permalink to this headline">#</a></h4>
+<p>A simpler way to find a variable’s value is to use a command called echo, which prints its arguments.</p>
+</section>
+<section id="how-can-i-repeat-a-command-many-times">
+<h4>How can I repeat a command many times?<a class="headerlink" href="#how-can-i-repeat-a-command-many-times" title="Permalink to this headline">#</a></h4>
+<p>Shell variables are also used in loops, which repeat commands many times. If we run this command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> filetype <span class="k">in</span> gif jpg png<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$filetype</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+<p>it produces:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gif
+jpg
+png
+</pre></div>
+</div>
+<p>Notice these things about the loop:</p>
+<p>The structure is for …variable… in …list… ; do …body… ; done
+The list of things the loop is to process (in our case, the words gif, jpg, and png).
+The variable that keeps track of which thing the loop is currently processing (in our case, filetype).
+The body of the loop that does the processing (in our case, echo <span class="math notranslate nohighlight">\(filetype).
+Notice that the body uses \)</span>filetype to get the variable’s value instead of just filetype, just like it does with any other shell variable. Also notice where the semi-colons go: the first one comes between the list and the keyword do, and the second comes between the body and the keyword done.</p>
+</section>
+<section id="how-can-i-run-many-commands-in-a-single-loop">
+<h4>How can I run many commands in a single loop?<a class="headerlink" href="#how-can-i-run-many-commands-in-a-single-loop" title="Permalink to this headline">#</a></h4>
+<p>Printing filenames is useful for debugging, but the real purpose of loops is to do things with multiple files. This loop prints the second line of each data file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> file <span class="k">in</span> seasonal/*.csv<span class="p">;</span> <span class="k">do</span> head -n <span class="m">2</span> <span class="nv">$file</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+<p>It has the same structure as the other loops you have already seen: all that’s different is that its body is a pipeline of two commands instead of a single command.</p>
+</section>
+<section id="how-can-i-do-many-things-in-a-single-loop">
+<h4>How can I do many things in a single loop?<a class="headerlink" href="#how-can-i-do-many-things-in-a-single-loop" title="Permalink to this headline">#</a></h4>
+<p>The loops you have seen so far all have a single command or pipeline in their body, but a loop can contain any number of commands. To tell the shell where one ends and the next begins, you must separate them with semi-colons:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> f <span class="k">in</span> seasonal/*.csv<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$f</span><span class="p">;</span> head -n <span class="m">2</span> <span class="nv">$f</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-new-tools">
+<h3>Creating new tools<a class="headerlink" href="#creating-new-tools" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 </section>
@@ -457,6 +758,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Data Science rols</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../SQL/Introduction%20to%20SQL.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to SQL</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

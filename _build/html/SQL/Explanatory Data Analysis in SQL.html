@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Science rols &#8212; Applied Data Science</title>
+    <title>Exploratory Data Analysis in SQL &#8212; Applied Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Engineer" href="data%20engineer.html" />
-    <link rel="prev" title="Airflow" href="../Mlops/airflow.html" />
+    <link rel="prev" title="Introduction to SQL" href="Introduction%20to%20SQL.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -168,35 +167,35 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Data%20Science%20rols/Datarols.html">
    Data Science rols
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="data%20engineer.html">
+    <a class="reference internal" href="../Data%20Science%20rols/data%20engineer.html">
      Data Engineer
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../SQL/Introduction%20to%20SQL.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Introduction%20to%20SQL.html">
    Introduction to SQL
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../SQL/Explanatory%20Data%20Analysis%20in%20SQL.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Exploratory Data Analysis in SQL
     </a>
    </li>
@@ -292,7 +291,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FData Science rols/Datarols.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FSQL/Explanatory Data Analysis in SQL.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -320,7 +319,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Data Science rols/Datarols.md"
+        <a href="../_sources/SQL/Explanatory Data Analysis in SQL.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -380,23 +379,40 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-engineer">
-   Data Engineer
+  <a class="reference internal nav-link" href="#database">
+   Database
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joins">
+     Joins
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coalesce">
+     Coalesce
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cast">
+     CAST()
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-and-aggregating-numeric-data">
+   Summarizing and aggregating numeric data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-analyst">
-   Data Analyst
+  <a class="reference internal nav-link" href="#exploring-categorical-data-and-unstructured-text">
+   Exploring categorical data and unstructured text
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-scientist">
-   Data Scientist
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-engineer">
-   Machine Learning engineer
+  <a class="reference internal nav-link" href="#working-with-dates-and-timestamps">
+   Working with dates and timestamps
   </a>
  </li>
 </ul>
@@ -408,7 +424,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data Science rols</h1>
+                <h1>Exploratory Data Analysis in SQL</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -419,23 +435,40 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-engineer">
-   Data Engineer
+  <a class="reference internal nav-link" href="#database">
+   Database
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joins">
+     Joins
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coalesce">
+     Coalesce
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cast">
+     CAST()
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-and-aggregating-numeric-data">
+   Summarizing and aggregating numeric data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-analyst">
-   Data Analyst
+  <a class="reference internal nav-link" href="#exploring-categorical-data-and-unstructured-text">
+   Exploring categorical data and unstructured text
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-scientist">
-   Data Scientist
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-engineer">
-   Machine Learning engineer
+  <a class="reference internal nav-link" href="#working-with-dates-and-timestamps">
+   Working with dates and timestamps
   </a>
  </li>
 </ul>
@@ -448,22 +481,101 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="data-science-rols">
-<h1>Data Science rols<a class="headerlink" href="#data-science-rols" title="Permalink to this headline">#</a></h1>
-<section id="data-engineer">
-<h2>Data Engineer<a class="headerlink" href="#data-engineer" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="data-analyst">
-<h2>Data Analyst<a class="headerlink" href="#data-analyst" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="data-scientist">
-<h2>Data Scientist<a class="headerlink" href="#data-scientist" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-engineer">
-<h2>Machine Learning engineer<a class="headerlink" href="#machine-learning-engineer" title="Permalink to this headline">#</a></h2>
-</section>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-in-sql">
+<h1>Exploratory Data Analysis in SQL<a class="headerlink" href="#exploratory-data-analysis-in-sql" title="Permalink to this headline">#</a></h1>
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">#</a></h2>
+<p>PostgreSQL is one of many different database system.</p>
+<p>Database can be seen as a plave where you can store data.</p>
+<p>A database scheme can be seen as the following:</p>
+<p><img alt="" src="../_images/star.png" /></p>
+<p>We we can se the different tables and how they are linked togeather.</p>
+<p>From here we can extract some of the values with SQL.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"></span>
+<span class="w">    </span><span class="n">COMPANY</span><span class="w"></span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
 </div>
+<section id="joins">
+<h3>Joins<a class="headerlink" href="#joins" title="Permalink to this headline">#</a></h3>
+<p>You can join table from different tables:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">company</span><span class="p">.</span><span class="n">name</span><span class="w"></span>
+<span class="c1">-- Table(s) to select from</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">company</span><span class="w"></span>
+<span class="w">       </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">fortune500</span><span class="w"></span>
+<span class="w">       </span><span class="k">on</span><span class="w"> </span><span class="n">company</span><span class="p">.</span><span class="n">ticker</span><span class="o">=</span><span class="n">fortune500</span><span class="p">.</span><span class="n">ticker</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We can use other joins as well.</p>
+<p>Relationsship between tables is based on the different keys.
+Foreign keys are those reference orther row. So we can combine tables. They come from a primary key, which is unique.</p>
+<p><img alt="" src="../_images/foreign.png" /></p>
+<p>Primary keys:</p>
+<p><img alt="" src="../_images/primary.png" /></p>
+<p>You often need to join multiple tables togeather to answaer different questions as <em>What is the most common stackoveflow tagtype?</em></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Select the 3 columns desired</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">tag_type</span><span class="p">.</span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">tag_type</span><span class="p">.</span><span class="k">type</span><span class="w"></span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">company</span><span class="w"></span>
+<span class="w">  	   </span><span class="c1">-- Join the tag_company and company tables</span>
+<span class="w">       </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">tag_company</span><span class="w"> </span>
+<span class="w">       </span><span class="k">ON</span><span class="w"> </span><span class="n">company</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tag_company</span><span class="p">.</span><span class="n">company_id</span><span class="w"></span>
+<span class="w">       </span><span class="c1">-- Join the tag_type and company tables</span>
+<span class="w">       </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">tag_type</span><span class="w"></span>
+<span class="w">       </span><span class="k">ON</span><span class="w"> </span><span class="n">tag_company</span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tag_type</span><span class="p">.</span><span class="n">tag</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- Filter to most common type</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="k">type</span><span class="o">=</span><span class="s1">&#39;cloud&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="coalesce">
+<h3>Coalesce<a class="headerlink" href="#coalesce" title="Permalink to this headline">#</a></h3>
+<p>The coalesce() function can be useful for specifying a default or backup value when a column contains NULL values.</p>
+<p>coalesce() checks arguments in order and returns the first non-NULL value, if one exists.</p>
+<ul class="simple">
+<li><p>coalesce(NULL, 1, 2) = 1</p></li>
+<li><p>coalesce(NULL, NULL) = NULL</p></li>
+<li><p>coalesce(2, 3, NULL) = 2</p></li>
+</ul>
+<p>In the fortune500 data, industry contains some missing values. Use coalesce() to use the value of sector as the industry when industry is NULL. Then find the most common industry.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Use coalesce</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">coalesce</span><span class="p">(</span><span class="n">industry</span><span class="p">,</span><span class="w"> </span><span class="n">sector</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">industry2</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="c1">-- Don&#39;t forget to count!</span>
+<span class="w">       </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">fortune500</span><span class="w"> </span>
+<span class="c1">-- Group by what? (What are you counting by?)</span>
+<span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">industry2</span><span class="w"></span>
+<span class="c1">-- Order results to see most common first</span>
+<span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<span class="c1">-- Limit results to get just the one value you want</span>
+<span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="cast">
+<h3>CAST()<a class="headerlink" href="#cast" title="Permalink to this headline">#</a></h3>
+<p>By this function we can voncer variable to different types.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span>
+<span class="w">    </span><span class="k">cast</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_type</span><span class="p">)</span><span class="w"></span>
+<span class="k">from</span><span class="w"> </span><span class="k">data</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Use can use ::  as the same:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span>
+<span class="w">    </span><span class="n">value</span><span class="p">::</span><span class="n">new_type</span><span class="w"></span>
+<span class="k">from</span><span class="w"> </span><span class="k">data</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="summarizing-and-aggregating-numeric-data">
+<h2>Summarizing and aggregating numeric data<a class="headerlink" href="#summarizing-and-aggregating-numeric-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="exploring-categorical-data-and-unstructured-text">
+<h2>Exploring categorical data and unstructured text<a class="headerlink" href="#exploring-categorical-data-and-unstructured-text" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="working-with-dates-and-timestamps">
+<h2>Working with dates and timestamps<a class="headerlink" href="#working-with-dates-and-timestamps" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,7 +591,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Data Science rols"
+            path: "./SQL"
         },
         predefinedOutput: true
     }
@@ -493,19 +605,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../Mlops/airflow.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Introduction%20to%20SQL.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Airflow</p>
+            <p class="prev-next-title">Introduction to SQL</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="data%20engineer.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Engineer</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

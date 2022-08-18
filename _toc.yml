@@ -19,3 +19,6 @@ chapters:
 - file: Data Science rols/Datarols.md
   sections:
   - file: Data Science rols/data engineer.md
+- file: SQL/Introduction to SQL.md
+  sections:
+  - file: SQL/Explanatory Data Analysis in SQL.md

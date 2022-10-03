@@ -22,3 +22,11 @@ chapters:
 - file: SQL/Introduction to SQL.md
   sections:
   - file: SQL/Explanatory Data Analysis in SQL.md
+- file: bg_case.md
+- file: pythonintro/python_introduction.md
+  sections:
+    - file: pythonintro/pythonintro.ipynb
+    - file: pythonintro/recursion.ipynb
+- file: Azure/azure.md
+  sections:
+    - file:  Azure/Data Engineering on Microsoft Azure.md  

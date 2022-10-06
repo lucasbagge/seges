@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Object detection &#8212; Applied Data Science</title>
+    <title>Introductoin &#8212; Applied Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Machine Learning introduction" href="../machine%20learning/ml.html" />
-    <link rel="prev" title="Git" href="../git/git_intro.html" />
+    <link rel="next" title="R tips" href="../R%20tips/Intro.html" />
+    <link rel="prev" title="Introduction" href="azure.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,8 +119,8 @@ const thebe_selector_output = ".output, .cell_output"
    Git
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../object%20detection/object_detection.html">
    Object detection
   </a>
  </li>
@@ -224,18 +224,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Azure/azure.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="azure.html">
    Introduction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Azure/Data%20Engineering%20on%20Microsoft%20Azure.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Introductoin
     </a>
    </li>
@@ -319,35 +319,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/object detection/object_detection.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -387,7 +358,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fobject detection/object_detection.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAzure/Data Engineering on Microsoft Azure.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -415,7 +386,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/object detection/object_detection.ipynb"
+        <a href="../_sources/Azure/Data Engineering on Microsoft Azure.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -426,7 +397,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -452,23 +423,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#azure-for-the-data-engineer">
+   Azure for the Data Engineer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#store-data-in-azure">
+   Store data in Azure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-integration-at-scale-with-azure-data-factory-or-azure-synapse-pipeline">
+   Data integration at scale with Azure Data Factory or Azure Synapse Pipeline
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Object detection</h1>
+                <h1>Introductoin</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#azure-for-the-data-engineer">
+   Azure for the Data Engineer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#store-data-in-azure">
+   Store data in Azure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-integration-at-scale-with-azure-data-factory-or-azure-synapse-pipeline">
+   Data integration at scale with Azure Data Factory or Azure Synapse Pipeline
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -476,16 +504,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="object-detection">
-<h1>Object detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="introductoin">
+<h1>Introductoin<a class="headerlink" href="#introductoin" title="Permalink to this headline">#</a></h1>
+<p>Based on several courses</p>
+<section id="azure-for-the-data-engineer">
+<h2><a class="reference external" href="https://learn.microsoft.com/en-gb/training/paths/azure-for-the-data-engineer/">Azure for the Data Engineer</a><a class="headerlink" href="#azure-for-the-data-engineer" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="store-data-in-azure">
+<h2><a class="reference external" href="https://learn.microsoft.com/en-gb/training/paths/store-data-in-azure/">Store data in Azure</a><a class="headerlink" href="#store-data-in-azure" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="data-integration-at-scale-with-azure-data-factory-or-azure-synapse-pipeline">
+<h2><a class="reference external" href="https://learn.microsoft.com/en-gb/training/paths/data-integration-scale-azure-data-factory/">Data integration at scale with Azure Data Factory or Azure Synapse Pipeline</a><a class="headerlink" href="#data-integration-at-scale-with-azure-data-factory-or-azure-synapse-pipeline" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -501,7 +531,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./object detection"
+            path: "./Azure"
         },
         predefinedOutput: true
     }
@@ -515,17 +545,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../git/git_intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="azure.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Git</p>
+            <p class="prev-next-title">Introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../machine%20learning/ml.html" title="next page">
+    <a class='right-next' id="next-link" href="../R%20tips/Intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning introduction</p>
+        <p class="prev-next-title">R tips</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

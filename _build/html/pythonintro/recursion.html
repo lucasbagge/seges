@@ -504,6 +504,21 @@ title="Print to PDF"
      Exercise 8.6 - handin 4 (triplet distance - part II)
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-1-bitonic-minimum">
+     Exercise 9.1 (bitonic minimum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-print-tree">
+     Exercise 9.2 (print tree)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-5-handin-5-eight-queens-puzzle">
+     Exercise 9.5 - handin 5 (eight queens puzzle)
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -553,6 +568,21 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-8-6-handin-4-triplet-distance-part-ii">
      Exercise 8.6 - handin 4 (triplet distance - part II)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-1-bitonic-minimum">
+     Exercise 9.1 (bitonic minimum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-print-tree">
+     Exercise 9.2 (print tree)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-5-handin-5-eight-queens-puzzle">
+     Exercise 9.5 - handin 5 (eight queens puzzle)
     </a>
    </li>
   </ul>
@@ -776,7 +806,7 @@ should return 10.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a) Træer:  (&#39;A&#39;, (((&#39;B&#39;, &#39;C&#39;), &#39;D&#39;), (&#39;E&#39;, &#39;F&#39;)))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a) Træer:  (((&#39;A&#39;, &#39;B&#39;), &#39;C&#39;), ((&#39;D&#39;, &#39;E&#39;), &#39;F&#39;))
 </pre></div>
 </div>
 </div>
@@ -843,6 +873,220 @@ should return 10.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c) distance between trees:  10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-1-bitonic-minimum">
+<h3>Exercise 9.1 (bitonic minimum)<a class="headerlink" href="#exercise-9-1-bitonic-minimum" title="Permalink to this headline">#</a></h3>
+<p>We call a list L = [x1, …, xn] bitonic, if there exists a k, 1 &lt; k &lt; n, such that</p>
+<p>x1 &gt; x2 &gt; ··· &gt; x{k-1} &gt; xk &lt; x{k+1} &lt; ··· &lt; xn,
+i.e. xk is the minimum of the list. Write a method bitonic_min that given a bitonic list, returns the minimum of the list. Your implementation should use binary search (i.e. you cannot use the Python builtin min function).</p>
+<p>Example. bitonic_min([10, 7, 4, 2, 3, 5, 9, 11, 13, 15]) should return 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bitonic_min</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>  <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> 
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bitonic_min</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can also be done recursively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>        
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bitonic_min_rec</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-2-print-tree">
+<h3>Exercise 9.2 (print tree)<a class="headerlink" href="#exercise-9-2-print-tree" title="Permalink to this headline">#</a></h3>
+<p>Assume we represent a tree by a recursive tuple, consisting of the name of the root followed by one recursive tuple for each of the children. Note that all nodes have a label (not only the leaves), and that a node with k children is represented by a tuple of length k + 1. Write a program that prints the tree with one label per line and with appropriate indentation, like below.</p>
+<p>Example. (‘root’, (‘node 1’,), (‘node 2’, (‘node 2.1’,), (‘node 2.2’,)), (‘node 3’,)) should be printed as</p>
+<p>–root
+|–node 1
+|–node 2
+|  |–node 2.1
+|  |–node 2.2
+|–node 3
+Hint. Write a recursive method and pass a string as an argument with the prefix to be printed in front of all lines generated by the recursive call.</p>
+<ul class="simple">
+<li><p>Først skal vi løbe igennem hver element.</p></li>
+<li></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;node 1&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;node 2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;node 2.1&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;node 2.2&#39;</span><span class="p">,)),</span> <span class="p">(</span><span class="s1">&#39;node 3&#39;</span><span class="p">,))</span>
+
+<span class="k">def</span> <span class="nf">print_tr</span><span class="p">(</span><span class="n">br</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">br</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  |&#39;</span> <span class="o">*</span> <span class="n">depth</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">print_tr</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">print_tr</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--root
+  |--node 1
+  |--node 2
+  |  |--node 2.1
+  |  |--node 2.2
+  |--node 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-5-handin-5-eight-queens-puzzle">
+<h3>Exercise 9.5 - handin 5 (eight queens puzzle)<a class="headerlink" href="#exercise-9-5-handin-5-eight-queens-puzzle" title="Permalink to this headline">#</a></h3>
+<p>Write a program that solves the eight queens puzzle. The program should solve the more general problem of solving the n queen problem on an n x n chessboard, where n is given as input. The program should output at least one solution if solutions exist, e.g. as below, or that there is no solution.</p>
+<p>Size of board: 5
+Q….
+..Q..
+….Q
+.Q…
+…Q.
+Hint. Write a recursive solution that generates all possible solutions, but avoids expanding partial solutions already known to be invalid. Since no two queens can be in the same row, a solution must have exactly one queen in each row. A partial solution for the first i queens can be described by a tuple of length i with the column positions for the queens in the i first rows. E.g., the tuple (0, 2, 4) could represent a partial solution for the first three rows of a 5 x 5 board:</p>
+<p>column : 01234
+row 0  : Q….
+row 1  : ..Q..
+row 2  : ….Q
+row 3  : …..
+row 4  : …..
+One way to structure your program is to define three functions:</p>
+<p>valid(r1, c1, r2, c2) that checks if two queens at positions (r1, c1) and (r2, c2) respectively do not threaten each other (i.e. are in different rows and columns and not on the same diagonal).</p>
+<p>print_solution(solution) that prints a solution given by a list solution where queen i is at position (i,solution(i)).</p>
+<p>solve(solution) is a recursive function that tries to expand a partial solution given by solution for the first len(solution) queens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Antal dronninger der skal løses: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="n">chessboard</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">chessboard</span> <span class="o">=</span> <span class="n">chessboard</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">possible</span><span class="p">(</span><span class="n">chessboard</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Først funktion til at se om problemet kan løses.</span>
+    <span class="n">l</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Tager hele længden af skakbrættet</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Ser om der er nogle dronningenri rækken.</span>
+        <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Hvis den findes så skal vi retuner falsk.</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>  <span class="c1"># Ser om der er nogle dronninger i kolonnen.</span>
+        <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Hvis der er en dronning retuner falsk.</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Hvis ikke ovenstående er tilfældet, så går den videre.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Går gennem alle rækker.</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Går gennem alle kolonner.</span>
+            <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Ser om der er en dronning.</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="nb">abs</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Ser om der er en dronning i diagonalen</span>
+                    <span class="k">return</span> <span class="kc">False</span> 
+    <span class="k">return</span> <span class="kc">True</span> 
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Længden som i forrig funktion.</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Føtst for hver række.</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Først for hver kolonne.</span>
+            <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Hvis der ingen dronning er kan vi indsætte 1.</span>
+                <span class="k">if</span> <span class="n">possible</span><span class="p">(</span><span class="n">chessboard</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Check om cellen er tom.</span>
+                    <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Hvis den er tom kan vi indsætte 1.</span>
+                    <span class="n">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Her kommer den rekursive løsning ind i billede.</span>
+                    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">chessboard</span><span class="p">)</span> <span class="o">==</span> <span class="n">l</span><span class="p">:</span> <span class="c1"># Check om vi har nået alle mulige løsninger.</span>
+                        <span class="k">return</span> <span class="n">chessboard</span> 
+                    <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Fjerner de tidliger dronninger</span>
+    <span class="k">return</span> <span class="n">chessboard</span> <span class="c1">#means we searched the space, we can return our result</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Antal dronninger der skal løses: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">chessboard</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">chessboard</span> <span class="o">=</span> <span class="n">chessboard</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1072</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1075</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1076</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1077</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install numpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/anaconda3/lib/python3.9/site-packages (1.21.5)
 </pre></div>
 </div>
 </div>

@@ -26,6 +26,8 @@ chapters:
   sections:
     - file: pythonintro/pythonintro.ipynb
     - file: pythonintro/recursion.ipynb
+    - file: pythonintro/classes.ipynb
+    - file: pythonintro/functions object.ipynb
 - file: Azure/azure.md
   sections:
     - file:  Azure/Data Engineering on Microsoft Azure.md  
@@ -33,3 +35,4 @@ chapters:
   sections:
   - file: R tips/keyring.md
 - file: powerbi/powerintro.md
+- file: ewii/case.md

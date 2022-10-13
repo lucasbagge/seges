@@ -1,0 +1,1164 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Python Recursion &#8212; Applied Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../Azure/azure.html" />
+    <link rel="prev" title="Python functions" href="pythonintro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logods.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Efficient Tricks and Tools for developer, Data Scientists and Statisticians
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git/git_intro.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../object%20detection/object_detection.html">
+   Object detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine%20learning/ml.html">
+   Machine Learning introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistical%20learning/sl.html">
+   Statistical Learning introduktion
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../bayes/bay.html">
+   Bayesians statistic introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../bayes/mmm_bayes.html">
+     Media Mixed Modelling with Bayesian statistics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Mlops/mlops.html">
+   MlOps
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Mlops/airflow.html">
+     Airflow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Data%20Science%20rols/Datarols.html">
+   Data Science rols
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data%20Science%20rols/data%20engineer.html">
+     Data Engineer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SQL/Introduction%20to%20SQL.html">
+   Introduction to SQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../SQL/Explanatory%20Data%20Analysis%20in%20SQL.html">
+     Exploratory Data Analysis in SQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="python_introduction.html">
+   Python introduction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pythonintro.html">
+     Python functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Python Recursion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Azure/azure.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Azure/Data%20Engineering%20on%20Microsoft%20Azure.html">
+     Introductoin
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../R%20tips/Intro.html">
+   R tips
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../R%20tips/keyring.html">
+     Intro to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       keyring
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../powerbi/powerintro.html">
+   Power BI
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/pythonintro/recursion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpythonintro/recursion.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/pythonintro/recursion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-1-upper-and-lower-cases">
+     Exercise 8.1 (upper and lower cases)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-2-list-subsets">
+     Exercise 8.2 (list subsets)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-3-tree-relabeling">
+     Exercise 8.3 (tree relabeling)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-4-validate-leaf-labeled-binary-trees">
+     Exercise 8.4 (validate leaf-labeled binary trees)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-6-handin-4-triplet-distance-part-ii">
+     Exercise 8.6 - handin 4 (triplet distance - part II)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-1-bitonic-minimum">
+     Exercise 9.1 (bitonic minimum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-print-tree">
+     Exercise 9.2 (print tree)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-5-handin-5-eight-queens-puzzle">
+     Exercise 9.5 - handin 5 (eight queens puzzle)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Python Recursion</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-1-upper-and-lower-cases">
+     Exercise 8.1 (upper and lower cases)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-2-list-subsets">
+     Exercise 8.2 (list subsets)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-3-tree-relabeling">
+     Exercise 8.3 (tree relabeling)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-4-validate-leaf-labeled-binary-trees">
+     Exercise 8.4 (validate leaf-labeled binary trees)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-6-handin-4-triplet-distance-part-ii">
+     Exercise 8.6 - handin 4 (triplet distance - part II)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-1-bitonic-minimum">
+     Exercise 9.1 (bitonic minimum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-2-print-tree">
+     Exercise 9.2 (print tree)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9-5-handin-5-eight-queens-puzzle">
+     Exercise 9.5 - handin 5 (eight queens puzzle)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="python-recursion">
+<h1>Python Recursion<a class="headerlink" href="#python-recursion" title="Permalink to this headline">#</a></h1>
+<p>The idea behind recursion is simple;</p>
+<blockquote>
+<div><p>Write a functoin that repeat itself.</p>
+</div></blockquote>
+<p>Let us look at at example where we iterate though a loop that prints its number until it each zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;blastoff&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">countdown</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">countdown</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+2
+1
+blastoff
+</pre></div>
+</div>
+</div>
+</div>
+<p>For applying recursion you need to orby three laws:</p>
+<ol class="simple">
+<li><p>A recursive algorithm must have a base case.</p></li>
+<li><p>A recursive algorithm must change its state and move toward the base case.</p></li>
+<li><p>A recursive algorithm must call itself, recursively.</p></li>
+</ol>
+<p>Let’s look at each one of these laws in more detail. First, a base case is the condition that allows the algorithm to stop recursing. A base case is typically a problem that is small enough to solve directly. In the countdown algorithm the base case is when the number is 0.</p>
+<p>To obey the second law, we must arrange for a change of state that moves the algorithm toward the base case. A change of state means that some data that the algorithm is using is modified. Usually the data that represents our problem gets smaller in some way.</p>
+<p>The final law is that the algorithm must call itself. This is the very definition of recursion. Recursion is a confusing concept to many beginning programmers. As a novice programmer, you have learned that functions are good because you can take a large problem and break it up into smaller problems. The smaller problems can be solved by writing a function to solve each problem. When we talk about recursion it may seem that we are talking ourselves in circles. We have a problem to solve with a function, but that function solves the problem by calling itself! But the logic is not circular at all; the logic of recursion is an elegant expression of solving a problem by breaking it down into a smaller and easier problems.</p>
+<p>Another way of explaining it is for the Russian <strong>Matryoshka DoLL</strong> that hase multiple dolls inside of it.</p>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="exercise-8-1-upper-and-lower-cases">
+<h3>Exercise 8.1 (upper and lower cases)<a class="headerlink" href="#exercise-8-1-upper-and-lower-cases" title="Permalink to this headline">#</a></h3>
+<p>Make a recursive function cases(s) that given a string s, generates a list of all possible upper and lower case combinations of the letters in the string. E.g. cases(‘abcB’) should return a list containing the following 16 strings [‘abCb’, ‘abCB’, ‘abcb’, ‘abcB’, ‘aBCb’, ‘aBCB’, ‘aBcb’, ‘aBcB’, ‘AbCb’, ‘AbCB’, ‘Abcb’, ‘AbcB’, ‘ABCb’, ‘ABCB’, ‘ABcb’, ‘ABcB’].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cases</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># Base Case</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+
+    <span class="n">hoved</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">haler</span> <span class="o">=</span> <span class="n">cases</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">Case</span> <span class="o">=</span> <span class="p">[</span><span class="n">hoved</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">hoved</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>  <span class="c1">#)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">case</span> <span class="o">+</span> <span class="n">hale</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">Case</span> <span class="k">for</span> <span class="n">hale</span> <span class="ow">in</span> <span class="n">haler</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abcB&#39;</span>
+
+<span class="n">cases</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;abcb&#39;,
+ &#39;abcB&#39;,
+ &#39;abCb&#39;,
+ &#39;abCB&#39;,
+ &#39;aBcb&#39;,
+ &#39;aBcB&#39;,
+ &#39;aBCb&#39;,
+ &#39;aBCB&#39;,
+ &#39;Abcb&#39;,
+ &#39;AbcB&#39;,
+ &#39;AbCb&#39;,
+ &#39;AbCB&#39;,
+ &#39;ABcb&#39;,
+ &#39;ABcB&#39;,
+ &#39;ABCb&#39;,
+ &#39;ABCB&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-8-2-list-subsets">
+<h3>Exercise 8.2 (list subsets)<a class="headerlink" href="#exercise-8-2-list-subsets" title="Permalink to this headline">#</a></h3>
+<p>Make a recursive function subsets(L) that given a list L returns a list of all subsets of L (each subset being a list). E.g. subsets([1, 2]) should return [[], [1], [2], [1, 2]]. The order of the returned lists can be arbitrary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l_s</span><span class="p">(</span><span class="n">ls</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ls</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="k">return</span> <span class="p">[[]]</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">l_s</span><span class="p">(</span><span class="n">ls</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="p">[[</span><span class="n">ls</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">l_s</span><span class="p">(</span><span class="n">lls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[], [2], [1], [1, 2]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-8-3-tree-relabeling">
+<h3>Exercise 8.3 (tree relabeling)<a class="headerlink" href="#exercise-8-3-tree-relabeling" title="Permalink to this headline">#</a></h3>
+<p>Make a recursive function relabel(tree, new_names) that takes a tree tree and a dictionary new_names = {old_name: new_name, …}, and returns a new tree where labels in the dictionary new_names are replaced by the corresponding values in the dictionary. Leaves not in the dictionary remain unchanged.</p>
+<p>Example. relabel((‘a’, (‘b’, ‘c’)), {‘a’: ‘x’, ‘c’: ‘y’}) should return (‘x’, (‘b’, ‘y’)).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relabel</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">new_names</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">new_names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">relabel</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">new_names</span><span class="p">)</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relabel</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)),</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;x&#39;, (&#39;b&#39;, &#39;y&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-8-4-validate-leaf-labeled-binary-trees">
+<h3>Exercise 8.4 (validate leaf-labeled binary trees)<a class="headerlink" href="#exercise-8-4-validate-leaf-labeled-binary-trees" title="Permalink to this headline">#</a></h3>
+<p>Assume we want to represent binary trees, where each leaf has a string as a label, by nested tuples. We require the leaves are labeled with distinct non-empty strings and all non-leaf nodes have exactly two children. E.g. (((‘A’, ‘B’), ‘C’), (‘D’, (‘F’, ‘E’))) is a valid binary tree.</p>
+<p>Write a function validate_string_tuple(t) that checks, i.e. returns True or False, if the value t is a tuple only containing distinct strings, e.g. (‘a’, ‘b’, ‘c’).</p>
+<p>Write a recursive function valid_binary_tree(tree) program that checks, i.e. returns True or False, if the value tree is a recursive tuple representing a binary tree as described above.</p>
+<p>Hint. Use the method isinstance to check if a value is of class tuple or a str, and use a recursive function to traverse a tree. Collect all leaf labels in a list, and check if all leaves are distinct by converting to set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_string_tuple</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>  <span class="c1"># fancy</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="p">(((</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">)))</span>
+<span class="n">validate_string_tuple</span><span class="p">(</span><span class="n">tt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-8-6-handin-4-triplet-distance-part-ii">
+<h3>Exercise 8.6 - handin 4 (triplet distance - part II)<a class="headerlink" href="#exercise-8-6-handin-4-triplet-distance-part-ii" title="Permalink to this headline">#</a></h3>
+<p>This handin is a continuation of the previous handin. The code from the previous handin should be reused in this exercise. In this second part the aim should be to write elegant recursive code using Python’s tuples and list comprehensions.</p>
+<p>Make a recursive function generate_tree(labels), that given a list of labels labels, returns a random binary tree where the list of leaf labels from left to right in the tree equals labels.</p>
+<p>Hint. Split the list labels at a random position into two nonempty parts left and right, and recursively construct the trees for the two parts.</p>
+<p>Example. generate_tree([‘A’, ‘B’, ‘C’, ‘D’, ‘E’, ‘F’]) could return (((‘A’, (‘B’, ‘C’)), (‘D’, ‘E’)), ‘F’)</p>
+<p>Make a recursive function generate_triplets(tree) that returns a pair (labels, triplets) where labels is a list of all leaf labels of tree, and triplets is a list of all canonical triplets anchored at some node of tree.</p>
+<p>Hint. Use isinstance(tree, str) to check if tree is a leaf.</p>
+<p>Example. generate_triplets((((‘A’, ‘F’), ‘B’), (‘D’, (‘C’, ‘E’)))) should return the following pair consisting of a list with the 6 leaf labels, and a list with the 20 canonical triplets anchored in the tree: ([‘A’, ‘F’, ‘B’, ‘D’, ‘C’, ‘E’], [(‘B’, (‘A’, ‘F’)), (‘D’, (‘C’, ‘E’)), (‘A’, (‘D’, ‘E’)), (‘A’, (‘C’, ‘D’)), (‘A’, (‘C’, ‘E’)), (‘F’, (‘D’, ‘E’)), (‘F’, (‘C’, ‘D’)), (‘F’, (‘C’, ‘E’)), (‘B’, (‘D’, ‘E’)), (‘B’, (‘C’, ‘D’)), (‘B’, (‘C’, ‘E’)), (‘D’, (‘A’, ‘F’)), (‘D’, (‘A’, ‘B’)), (‘D’, (‘B’, ‘F’)), (‘C’, (‘A’, ‘F’)), (‘C’, (‘A’, ‘B’)), (‘C’, (‘B’, ‘F’)), (‘E’, (‘A’, ‘F’)), (‘E’, (‘A’, ‘B’)), (‘E’, (‘B’, ‘F’))])</p>
+<p>Make a function triplet_distance(tree1, tree2) that computes the triplet distance between the trees tree1 and tree2.</p>
+<p>Hint. Recall that the triplet distance equals n · (n - 1) · (n - 2) / 6 minus the number of common triplets between tree1 and tree2, where n is the number of common labels in tree1 and tree2, and use Python set to handle the sets of computed triplets.</p>
+<p>Example. For the two trees above</p>
+<p>triplet_distance((((‘A’, ‘F’), ‘B’), (‘D’, (‘C’, ‘E’))), ((((‘D’, ‘A’), ‘B’), ‘F’), (‘C’, ‘E’))
+should return 10.</p>
+<p>What is the order of the tree sizes you can handle with generate_tree and triplet_distance in reasonable time - say about 10 seconds? Tens, hundreds, thousands, millions… of leaves? Use the function generate_tree to generate random trees of increasing sizes and measure the time for generate_tree and triplet_distance separately.</p>
+<p>(Optional) Make a function print_ascii_tree(tree) to print trees like the ones shown in part I of this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_tree</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="c1"># base case</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">split</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">L</span><span class="p">[:</span><span class="n">split</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">generate_tree</span><span class="p">(</span><span class="n">left</span><span class="p">),</span> <span class="n">generate_tree</span><span class="p">(</span><span class="n">right</span><span class="p">))</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a) Træer: &quot;</span> <span class="p">,</span><span class="n">generate_tree</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a) Træer:  (((&#39;A&#39;, &#39;B&#39;), &#39;C&#39;), ((&#39;D&#39;, &#39;E&#39;), &#39;F&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># b)</span>
+
+<span class="c1"># canonical_triplets er fra sidste afleverin</span>
+<span class="k">def</span> <span class="nf">canonical_triplets</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+  <span class="n">can</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">B</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">B</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">z</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">can</span>
+
+<span class="c1"># anchored_triplets er fra sidste afleverin</span>
+<span class="k">def</span> <span class="nf">anchored_triplets</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+  <span class="n">left</span> <span class="o">=</span> <span class="n">canonical_triplets</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+  <span class="n">right</span> <span class="o">=</span> <span class="n">left</span>
+  <span class="n">right</span> <span class="o">+=</span> <span class="n">canonical_triplets</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">((</span> <span class="n">right</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">generate_triplets</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="p">[]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">left_labels</span><span class="p">,</span> <span class="n">left_triplets</span> <span class="o">=</span> <span class="n">generate_triplets</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+    <span class="n">right_labels</span><span class="p">,</span> <span class="n">right_triplets</span> <span class="o">=</span> <span class="n">generate_triplets</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+    
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">left_labels</span> <span class="o">+</span> <span class="n">right_labels</span>
+    <span class="n">triplets</span> <span class="o">=</span> <span class="n">left_triplets</span> <span class="o">+</span> <span class="n">right_triplets</span>
+    
+    <span class="n">anchored_triplet</span> <span class="o">=</span> <span class="n">anchored_triplets</span><span class="p">(</span><span class="n">left_labels</span><span class="p">,</span> <span class="n">right_labels</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">triplets</span> <span class="o">+</span> <span class="n">anchored_triplet</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b) output: &quot;</span> <span class="p">,</span><span class="n">generate_triplets</span><span class="p">((((</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">),</span><span class="s1">&#39;B&#39;</span><span class="p">),(</span><span class="s1">&#39;D&#39;</span><span class="p">,(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">))))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b) output:  ([&#39;A&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;E&#39;], [(&#39;B&#39;, (&#39;A&#39;, &#39;F&#39;)), (&#39;D&#39;, (&#39;C&#39;, &#39;E&#39;)), (&#39;A&#39;, (&#39;D&#39;, &#39;E&#39;)), (&#39;A&#39;, (&#39;C&#39;, &#39;D&#39;)), (&#39;A&#39;, (&#39;C&#39;, &#39;E&#39;)), (&#39;F&#39;, (&#39;D&#39;, &#39;E&#39;)), (&#39;F&#39;, (&#39;C&#39;, &#39;D&#39;)), (&#39;F&#39;, (&#39;C&#39;, &#39;E&#39;)), (&#39;B&#39;, (&#39;D&#39;, &#39;E&#39;)), (&#39;B&#39;, (&#39;C&#39;, &#39;D&#39;)), (&#39;B&#39;, (&#39;C&#39;, &#39;E&#39;)), (&#39;D&#39;, (&#39;A&#39;, &#39;F&#39;)), (&#39;D&#39;, (&#39;A&#39;, &#39;B&#39;)), (&#39;D&#39;, (&#39;B&#39;, &#39;F&#39;)), (&#39;C&#39;, (&#39;A&#39;, &#39;F&#39;)), (&#39;C&#39;, (&#39;A&#39;, &#39;B&#39;)), (&#39;C&#39;, (&#39;B&#39;, &#39;F&#39;)), (&#39;E&#39;, (&#39;A&#39;, &#39;F&#39;)), (&#39;E&#39;, (&#39;A&#39;, &#39;B&#39;)), (&#39;E&#39;, (&#39;B&#39;, &#39;F&#39;))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">triplet_distance</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
+  <span class="n">gen_T1</span> <span class="o">=</span> <span class="n">generate_triplets</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
+  <span class="n">gen_T2</span> <span class="o">=</span> <span class="n">generate_triplets</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+  
+  <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_T1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">gen_T1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">gen_T2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  
+  <span class="n">intersec</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+  
+  <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span> <span class="o">//</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">intersec</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c) distance between trees: &quot;</span><span class="p">,</span><span class="n">triplet_distance</span><span class="p">((((</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">),</span><span class="s1">&#39;B&#39;</span><span class="p">),(</span><span class="s1">&#39;D&#39;</span><span class="p">,(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">))),</span> <span class="p">((((</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span><span class="s1">&#39;B&#39;</span><span class="p">),</span><span class="s1">&#39;F&#39;</span><span class="p">),(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c) distance between trees:  10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-1-bitonic-minimum">
+<h3>Exercise 9.1 (bitonic minimum)<a class="headerlink" href="#exercise-9-1-bitonic-minimum" title="Permalink to this headline">#</a></h3>
+<p>We call a list L = [x1, …, xn] bitonic, if there exists a k, 1 &lt; k &lt; n, such that</p>
+<p>x1 &gt; x2 &gt; ··· &gt; x{k-1} &gt; xk &lt; x{k+1} &lt; ··· &lt; xn,
+i.e. xk is the minimum of the list. Write a method bitonic_min that given a bitonic list, returns the minimum of the list. Your implementation should use binary search (i.e. you cannot use the Python builtin min function).</p>
+<p>Example. bitonic_min([10, 7, 4, 2, 3, 5, 9, 11, 13, 15]) should return 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bitonic_min</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>  <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> 
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bitonic_min</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can also be done recursively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bitonic_min_rec</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>        
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bitonic_min_rec</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-2-print-tree">
+<h3>Exercise 9.2 (print tree)<a class="headerlink" href="#exercise-9-2-print-tree" title="Permalink to this headline">#</a></h3>
+<p>Assume we represent a tree by a recursive tuple, consisting of the name of the root followed by one recursive tuple for each of the children. Note that all nodes have a label (not only the leaves), and that a node with k children is represented by a tuple of length k + 1. Write a program that prints the tree with one label per line and with appropriate indentation, like below.</p>
+<p>Example. (‘root’, (‘node 1’,), (‘node 2’, (‘node 2.1’,), (‘node 2.2’,)), (‘node 3’,)) should be printed as</p>
+<p>–root
+|–node 1
+|–node 2
+|  |–node 2.1
+|  |–node 2.2
+|–node 3
+Hint. Write a recursive method and pass a string as an argument with the prefix to be printed in front of all lines generated by the recursive call.</p>
+<ul class="simple">
+<li><p>Først skal vi løbe igennem hver element.</p></li>
+<li></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;node 1&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;node 2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;node 2.1&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;node 2.2&#39;</span><span class="p">,)),</span> <span class="p">(</span><span class="s1">&#39;node 3&#39;</span><span class="p">,))</span>
+
+<span class="k">def</span> <span class="nf">print_tr</span><span class="p">(</span><span class="n">br</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">br</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  |&#39;</span> <span class="o">*</span> <span class="n">depth</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">print_tr</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">print_tr</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--root
+  |--node 1
+  |--node 2
+  |  |--node 2.1
+  |  |--node 2.2
+  |--node 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-9-5-handin-5-eight-queens-puzzle">
+<h3>Exercise 9.5 - handin 5 (eight queens puzzle)<a class="headerlink" href="#exercise-9-5-handin-5-eight-queens-puzzle" title="Permalink to this headline">#</a></h3>
+<p>Write a program that solves the eight queens puzzle. The program should solve the more general problem of solving the n queen problem on an n x n chessboard, where n is given as input. The program should output at least one solution if solutions exist, e.g. as below, or that there is no solution.</p>
+<p>Size of board: 5
+Q….
+..Q..
+….Q
+.Q…
+…Q.
+Hint. Write a recursive solution that generates all possible solutions, but avoids expanding partial solutions already known to be invalid. Since no two queens can be in the same row, a solution must have exactly one queen in each row. A partial solution for the first i queens can be described by a tuple of length i with the column positions for the queens in the i first rows. E.g., the tuple (0, 2, 4) could represent a partial solution for the first three rows of a 5 x 5 board:</p>
+<p>column : 01234
+row 0  : Q….
+row 1  : ..Q..
+row 2  : ….Q
+row 3  : …..
+row 4  : …..
+One way to structure your program is to define three functions:</p>
+<p>valid(r1, c1, r2, c2) that checks if two queens at positions (r1, c1) and (r2, c2) respectively do not threaten each other (i.e. are in different rows and columns and not on the same diagonal).</p>
+<p>print_solution(solution) that prints a solution given by a list solution where queen i is at position (i,solution(i)).</p>
+<p>solve(solution) is a recursive function that tries to expand a partial solution given by solution for the first len(solution) queens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Antal dronninger der skal løses: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="n">chessboard</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">chessboard</span> <span class="o">=</span> <span class="n">chessboard</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">possible</span><span class="p">(</span><span class="n">chessboard</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Først funktion til at se om problemet kan løses.</span>
+    <span class="n">l</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Tager hele længden af skakbrættet</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Ser om der er nogle dronningenri rækken.</span>
+        <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Hvis den findes så skal vi retuner falsk.</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>  <span class="c1"># Ser om der er nogle dronninger i kolonnen.</span>
+        <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Hvis der er en dronning retuner falsk.</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Hvis ikke ovenstående er tilfældet, så går den videre.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Går gennem alle rækker.</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Går gennem alle kolonner.</span>
+            <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Ser om der er en dronning.</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="nb">abs</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Ser om der er en dronning i diagonalen</span>
+                    <span class="k">return</span> <span class="kc">False</span> 
+    <span class="k">return</span> <span class="kc">True</span> 
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Længden som i forrig funktion.</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Føtst for hver række.</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="c1"># Først for hver kolonne.</span>
+            <span class="k">if</span> <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Hvis der ingen dronning er kan vi indsætte 1.</span>
+                <span class="k">if</span> <span class="n">possible</span><span class="p">(</span><span class="n">chessboard</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="c1"># Check om cellen er tom.</span>
+                    <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Hvis den er tom kan vi indsætte 1.</span>
+                    <span class="n">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)</span> <span class="c1"># Her kommer den rekursive løsning ind i billede.</span>
+                    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">chessboard</span><span class="p">)</span> <span class="o">==</span> <span class="n">l</span><span class="p">:</span> <span class="c1"># Check om vi har nået alle mulige løsninger.</span>
+                        <span class="k">return</span> <span class="n">chessboard</span> 
+                    <span class="n">chessboard</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Fjerner de tidliger dronninger</span>
+    <span class="k">return</span> <span class="n">chessboard</span> <span class="c1">#means we searched the space, we can return our result</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">chessboard</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Antal dronninger der skal løses: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">chessboard</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">chessboard</span> <span class="o">=</span> <span class="n">chessboard</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1072</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1075</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1076</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1077</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install numpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/anaconda3/lib/python3.9/site-packages (1.21.5)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pythonintro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pythonintro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Python functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Azure/azure.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

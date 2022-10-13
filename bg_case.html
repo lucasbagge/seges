@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Efficient Tricks and Tools for developer, Data Scientists and Statisticians &#8212; Applied Data Science</title>
+    <title>Breumer Group Case &#8212; Applied Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Git" href="git/git_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +105,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
                     Efficient Tricks and Tools for developer, Data Scientists and Statisticians
                 </a>
             </li>
@@ -357,7 +356,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbg_case.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -385,7 +384,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/README.md"
+        <a href="_sources/bg_case.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -445,8 +444,53 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-should-you-expect-from-this-book">
-   What Should You Expect From This Book?
+  <a class="reference internal nav-link" href="#problem-og-introduktion">
+   Problem og introduktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#business-value">
+   Business value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#teknologier-og-frameworks">
+   Teknologier og frameworks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#den-kobte-losning-portainer">
+     Den købte løsning: Portainer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#den-semi-opfundne-losning-med-airflow">
+     Den semi opfundne løsning med Airflow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inginor-losningen">
+     Inginør løsningen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opmaerksomhedspunkter">
+   Opmærksomhedspunkter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#min-rejse-til-i-data-enginneering">
+   Min rejse til i
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Data
+    </span>
+    <span class="pre">
+     Enginneering
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -458,7 +502,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Efficient Tricks and Tools for developer, Data Scientists and Statisticians</h1>
+                <h1>Breumer Group Case</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -469,8 +513,53 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-should-you-expect-from-this-book">
-   What Should You Expect From This Book?
+  <a class="reference internal nav-link" href="#problem-og-introduktion">
+   Problem og introduktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#business-value">
+   Business value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#teknologier-og-frameworks">
+   Teknologier og frameworks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#den-kobte-losning-portainer">
+     Den købte løsning: Portainer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#den-semi-opfundne-losning-med-airflow">
+     Den semi opfundne løsning med Airflow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inginor-losningen">
+     Inginør løsningen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opmaerksomhedspunkter">
+   Opmærksomhedspunkter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#min-rejse-til-i-data-enginneering">
+   Min rejse til i
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Data
+    </span>
+    <span class="pre">
+     Enginneering
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -483,22 +572,119 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="efficient-tricks-and-tools-for-developer-data-scientists-and-statisticians">
-<h1>Efficient Tricks and Tools for developer, Data Scientists and Statisticians<a class="headerlink" href="#efficient-tricks-and-tools-for-developer-data-scientists-and-statisticians" title="Permalink to this headline">#</a></h1>
-<p>Why efficient? Because using the moderen data stack more efficiently will make your code more readable and run more efficiently.</p>
-<p>The goal of this book is to spread the awareness of efficient ways to do:</p>
-<ul class="simple">
-<li><p>Using Git for version control.</p></li>
-<li><p>Support the gap between Statistical- and Machine Learning.</p></li>
-<li><p>Building mlops platform.</p></li>
-</ul>
-<section id="what-should-you-expect-from-this-book">
-<h2>What Should You Expect From This Book?<a class="headerlink" href="#what-should-you-expect-from-this-book" title="Permalink to this headline">#</a></h2>
-<p>This book expects you to have some basic knowledge of Programming, statistic, probability and data science.</p>
-<p>You should also expect bite-size code snippets for each section. This will allow you to obtain multiple pieces of knowledge in fewer than one minute. I included the link to the resources for every tools introduced in case you want to explore them further.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="breumer-group-case">
+<h1>Breumer Group <code class="docutils literal notranslate"><span class="pre">Case</span></code><a class="headerlink" href="#breumer-group-case" title="Permalink to this headline">#</a></h1>
+<section id="problem-og-introduktion">
+<h2>Problem og introduktion<a class="headerlink" href="#problem-og-introduktion" title="Permalink to this headline">#</a></h2>
+<p>Først lad os definer hvad vores case er:</p>
+<blockquote>
+<div><p>Vi ønsker at udvikle en webbaseret frontend til nemmere administration af disse services således ikke kun superbrugere kan administrere disse.</p>
+</div></blockquote>
+<p>Til denne præsentation vil jeg starte med at definer hvad jeg ser som de værdier man kan få ved at lave denne løsning.</p>
+<p>Herefter vil jeg komme igennem de tre mulighede løsninger jeg er kommet på i form af; en købt løsning, semi opfundne løsning og inginør løsningen.</p>
+<p>Til sidst vil jeg fremhæve nogle vigtig pointer for sådan et projekt og hvorfor nogle af de nævnte løsninger nok ikke vil være en mulighed.</p>
 </section>
-<div class="toctree-wrapper compound">
+<section id="business-value">
+<h2>Business value<a class="headerlink" href="#business-value" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Figørelse af services.</p></li>
+<li><p>Læring af software.</p></li>
+</ul>
+</section>
+<section id="teknologier-og-frameworks">
+<h2>Teknologier og frameworks<a class="headerlink" href="#teknologier-og-frameworks" title="Permalink to this headline">#</a></h2>
+<section id="den-kobte-losning-portainer">
+<h3>Den købte løsning: <a class="reference external" href="https://www.portainer.io">Portainer</a><a class="headerlink" href="#den-kobte-losning-portainer" title="Permalink to this headline">#</a></h3>
+<p>Gør det muligt at overskue sine docker services og opnå alle de ønskede formål, og har en god interface:</p>
+<p><img alt="" src="_images/portier.png" /></p>
+<p>En ulempe man skal være opmærksom på er det er en løsning, som koster penge hvis det skal skaleres på.</p>
+</section>
+<section id="den-semi-opfundne-losning-med-airflow">
+<h3>Den semi opfundne løsning med <a class="reference external" href="https://www.portainer.io">Airflow</a><a class="headerlink" href="#den-semi-opfundne-losning-med-airflow" title="Permalink to this headline">#</a></h3>
+<p>Airflow er oprindelig et workflow orchestratering værktøj, men med en del forskellige operator, som er forskellige <a class="reference external" href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/operators.html">opgaver</a> man kan sætte i gang og så monitor.</p>
+<p>F.eks. hvis vi har en simple <code class="docutils literal notranslate"><span class="pre">DAG</span></code>der bare kører så kan den køre et docker services med <code class="docutils literal notranslate"><span class="pre">dockerOperator</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.docker_operator</span> <span class="kn">import</span> <span class="n">DockerOperator</span>
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;owner&#39;</span>                 <span class="p">:</span> <span class="s1">&#39;airflow&#39;</span><span class="p">,</span>
+<span class="s1">&#39;description&#39;</span>           <span class="p">:</span> <span class="s1">&#39;Use of the DockerOperator&#39;</span><span class="p">,</span>
+<span class="s1">&#39;depend_on_past&#39;</span>        <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="s1">&#39;start_date&#39;</span>            <span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="s1">&#39;email_on_failure&#39;</span>      <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="s1">&#39;email_on_retry&#39;</span>        <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="s1">&#39;retries&#39;</span>               <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="s1">&#39;retry_delay&#39;</span>           <span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;docker_dag&#39;</span><span class="p">,</span>
+     <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="s2">&quot;5 * * * *&quot;</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;print_current_date&#39;</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;date&#39;</span>
+    <span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">DockerOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;docker_command&#39;</span><span class="p">,</span>
+        <span class="n">image</span><span class="o">=</span><span class="s1">&#39;centos:latest&#39;</span><span class="p">,</span>
+        <span class="n">api_version</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+        <span class="n">auto_remove</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">command</span><span class="o">=</span><span class="s2">&quot;/bin/sleep 30&quot;</span><span class="p">,</span>
+        <span class="n">docker_url</span><span class="o">=</span><span class="s2">&quot;unix://var/run/docker.sock&quot;</span><span class="p">,</span>
+        <span class="n">network_mode</span><span class="o">=</span><span class="s2">&quot;bridge&quot;</span>
+    <span class="p">)</span>
+    <span class="n">t3</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;print_hello&#39;</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;echo &quot;hello world&quot;&#39;</span>
+<span class="p">)</span>
+<span class="n">t1</span> <span class="o">&gt;&gt;</span> <span class="n">t2</span> <span class="o">&gt;&gt;</span> <span class="n">t3</span>
+</pre></div>
 </div>
+<p>Det giver os en Brugerflade der kan let se hvilke services vi har sat i gang og finde frem til en logging:</p>
+<p><img alt="" src="_images/airflowlog.png" /></p>
+<p>Kikker vi på <code class="docutils literal notranslate"><span class="pre">DAGs</span></code> kan vi se hvilke opgaver der er og det giver os en del funktionalitet med at kører dem igen.</p>
+<p><img alt="" src="_images/airflowui.png" /></p>
+<p>Der er dog umiddelbart en række ulemper ved at bruge Airflow:</p>
+<ul class="simple">
+<li><p>Ikke bygge til formålet.</p></li>
+<li><p>Kan ikke skaleres?</p>
+<ul>
+<li><p>Dog er der også en <code class="docutils literal notranslate"><span class="pre">kubernetesOperator</span></code>, så måske er der en fremtid.</p></li>
+</ul>
+</li>
+<li><p>Har en stejl læringskurve.</p></li>
+</ul>
+</section>
+<section id="inginor-losningen">
+<h3>Inginør løsningen<a class="headerlink" href="#inginor-losningen" title="Permalink to this headline">#</a></h3>
+<p>Vi kan også siger vi bygger noget op fra grunden, hvor vi kan burge python som udviklingssprog og benytter of af;</p>
+<ul class="simple">
+<li><p>logging</p></li>
+<li><p>pyttest</p></li>
+<li><p>dash</p></li>
+</ul>
+<p>Der er en masse andre funktionaliteter som skal tages med, men jeg forstiller mig der er en mulighed for at lave en cool UI såsom:</p>
+<p><img alt="" src="_images/dash.webp" /></p>
+<p>Hvor man selvfølgelig bygger noget i stil med Portier og Airflow.</p>
+</section>
+</section>
+<section id="opmaerksomhedspunkter">
+<h2>Opmærksomhedspunkter<a class="headerlink" href="#opmaerksomhedspunkter" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Tidshorisont.</p></li>
+<li><p>Værdi.</p></li>
+<li><p>Omkstninger.</p></li>
+</ul>
+</section>
+<section id="min-rejse-til-i-data-enginneering">
+<h2>Min rejse til i <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Enginneering</span></code><a class="headerlink" href="#min-rejse-til-i-data-enginneering" title="Permalink to this headline">#</a></h2>
+<p>Jeg er i gang med et kursus hos  <a class="reference external" href="https://app.datacamp.com/learn/career-tracks/data-engineer-with-python?version=4">datacamp</a>, som har en spor indenfor data engineering.</p>
+<p>Ud over dette har jeg stor erfaring med at tage kurser fra Coursera, hvor jeg i min data analyst rejse er i gang med et <a class="reference external" href="https://www.coursera.org/learn/process-data/home/week/1">microsoft certificeringskursus for data analyst</a>. Derfor kigger jeg meget ind i to kurser herfra:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.coursera.org/learn/microsoft-azure-dp-203-data-engineering">Microsoft Azure for Data Engineering</a></p></li>
+<li><p><a class="reference external" href="https://www.coursera.org/professional-certificates/ibm-data-engineer">IBM Data Engineering Professional Certificate</a></p></li>
+</ul>
+<p>Udover disse vil jeg bare bruge min nysgerrighed til at finde ud af meget mere om faget og hvordan jeg udvikler mig.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -528,13 +714,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="git/git_intro.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Git</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Git &#8212; Applied Data Science</title>
+    <title>Python functions &#8212; Applied Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Object detection" href="../object%20detection/object_detection.html" />
-    <link rel="prev" title="Efficient Tricks and Tools for developer, Data Scientists and Statisticians" href="../README.html" />
+    <link rel="next" title="Python Recursion" href="recursion.html" />
+    <link rel="prev" title="Python introduction" href="python_introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,8 +114,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git/git_intro.html">
    Git
   </a>
  </li>
@@ -202,23 +202,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pythonintro/python_introduction.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="python_introduction.html">
    Python introduction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../pythonintro/pythonintro.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Python functions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../pythonintro/recursion.html">
+    <a class="reference internal" href="recursion.html">
      Python Recursion
     </a>
    </li>
@@ -319,6 +319,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/pythonintro/pythonintro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -358,7 +387,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgit/git_intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpythonintro/pythonintro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -386,7 +415,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/git/git_intro.md"
+        <a href="../_sources/pythonintro/pythonintro.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -397,7 +426,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -446,19 +475,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#github-cli-brings-github-to-your-terminal">
-   GitHub CLI: Brings GitHub to Your Terminal
+  <a class="reference internal nav-link" href="#multiple-arguments">
+   Multiple arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-new-github-repo">
-   Create a new GitHub repo
+  <a class="reference internal nav-link" href="#arbitrary-keyword-arguments-kwargs">
+   Arbitrary Keyword Arguments, **kwargs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloads-contents-from-remote-repository">
-   downloads contents from remote repository
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7-1-average">
+     Exercise 7.1 (average)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-average-two-x-y-that-computes-the-average-of-x-and-y-i-e-x-y-2">
+       Write a function average_two(x, y) that computes the average of x and y, i.e. (x + y )/2.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-list-average-l-that-computes-the-average-of-the-numbers-in-the-list-l">
+       Write a function list_average(L) that computes the average of the numbers in the list L.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-average-x1-xk-that-takes-an-arbitrary-number-of-arguments-but-at-least-one-and-computes-the-average-of-x1-xk">
+       Write a function average(x1, …, xk) that takes an arbitrary number of arguments (but at least one) and computes the average of x1, …, xk.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -469,7 +522,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Git</h1>
+                <h1>Python functions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -480,19 +533,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#github-cli-brings-github-to-your-terminal">
-   GitHub CLI: Brings GitHub to Your Terminal
+  <a class="reference internal nav-link" href="#multiple-arguments">
+   Multiple arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-new-github-repo">
-   Create a new GitHub repo
+  <a class="reference internal nav-link" href="#arbitrary-keyword-arguments-kwargs">
+   Arbitrary Keyword Arguments, **kwargs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloads-contents-from-remote-repository">
-   downloads contents from remote repository
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7-1-average">
+     Exercise 7.1 (average)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-average-two-x-y-that-computes-the-average-of-x-and-y-i-e-x-y-2">
+       Write a function average_two(x, y) that computes the average of x and y, i.e. (x + y )/2.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-list-average-l-that-computes-the-average-of-the-numbers-in-the-list-l">
+       Write a function list_average(L) that computes the average of the numbers in the list L.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-average-x1-xk-that-takes-an-arbitrary-number-of-arguments-but-at-least-one-and-computes-the-average-of-x1-xk">
+       Write a function average(x1, …, xk) that takes an arbitrary number of arguments (but at least one) and computes the average of x1, …, xk.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -504,45 +581,139 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
-<p><img alt="" src="../_images/gitlogo.png" /></p>
-<p>it is used for version control.</p>
-<section id="github-cli-brings-github-to-your-terminal">
-<h2>GitHub CLI: Brings GitHub to Your Terminal<a class="headerlink" href="#github-cli-brings-github-to-your-terminal" title="Permalink to this headline">#</a></h2>
-<p>If you create a local folder before creating a GitHub repository for it, you might need to go to the GitHub website then create a new repository, then add a remote to your current folder. Is there any way that all of these steps could be done in the terminal in 1 line of code?</p>
-<p>That is when GitHub CLI comes in handy. The code snippet below shows how to create a new Github repository in your local folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd your_local_folder
-
-# Create an empty local git repo
-$ git init
+  <section class="tex2jax_ignore mathjax_ignore" id="python-functions">
+<h1>Python functions<a class="headerlink" href="#python-functions" title="Permalink to this headline">#</a></h1>
+<p>In python you can easy define a function using the syntacs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">functino</span><span class="o">-</span><span class="n">name</span><span class="p">(</span><span class="n">var_1</span><span class="p">,</span><span class="o">...</span><span class="n">var_k</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">body</span> <span class="n">code</span>
 </pre></div>
+</div>
+<p>Where as in R we give the functoin some variables/parameter and it return s ouput.</p>
+<p>Let us see an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="n">z</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test function </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sum3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test function 
+ 6
+</pre></div>
+</div>
+</div>
+</div>
+<section id="multiple-arguments">
+<h2>Multiple arguments<a class="headerlink" href="#multiple-arguments" title="Permalink to this headline">#</a></h2>
+<p>If you dont want to specifie every variable that goes into your function you can add <code class="docutils literal notranslate"><span class="pre">*variable</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">L</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;L = &#39;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+    
+<span class="n">my_print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">1</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =  1
+y =  2
+L =  (3, 4, 5, 56, 3, 2, 1)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="create-a-new-github-repo">
-<h2>Create a new GitHub repo<a class="headerlink" href="#create-a-new-github-repo" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gh repo create
+<section id="arbitrary-keyword-arguments-kwargs">
+<h2>Arbitrary Keyword Arguments, **kwargs<a class="headerlink" href="#arbitrary-keyword-arguments-kwargs" title="Permalink to this headline">#</a></h2>
+<p>If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.</p>
+<p>This way the function will receive a dictionary of arguments, and can access the items accordingly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="o">**</span><span class="n">L</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;his name is &#39;</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])</span>
+    
+<span class="n">my_func</span><span class="p">(</span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;Lucas&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>With GitHub CLI, you can also manage your pull requests, issues, repositories, gists, and so much more! Check out GitHub CLI here.</p>
-<p>Pull One File from Another Branch Using Git
-Pull the files from another branch into your branch can be messy. What if you just want to pull one file from another branch? You can easily to like that with the code snippet below:</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>his name is Lucas
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="downloads-contents-from-remote-repository">
-<h2>downloads contents from remote repository<a class="headerlink" href="#downloads-contents-from-remote-repository" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git fetch
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="exercise-7-1-average">
+<h3>Exercise 7.1 (average)<a class="headerlink" href="#exercise-7-1-average" title="Permalink to this headline">#</a></h3>
+<section id="write-a-function-average-two-x-y-that-computes-the-average-of-x-and-y-i-e-x-y-2">
+<h4>Write a function average_two(x, y) that computes the average of x and y, i.e. (x + y )/2.<a class="headerlink" href="#write-a-function-average-two-x-y-that-computes-the-average-of-x-and-y-i-e-x-y-2" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average_two</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 
-# navigate to another branch
-$ git checkout
-
-# adds a change in the working directory to the staging area
-$ git add 
-
-# captures the state of a project at that point in time
-$ git commit
+<span class="nb">print</span><span class="p">(</span><span class="n">average_two</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Now you just update one file in your branch without messing with the rest!</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="write-a-function-list-average-l-that-computes-the-average-of-the-numbers-in-the-list-l">
+<h4>Write a function list_average(L) that computes the average of the numbers in the list L.<a class="headerlink" href="#write-a-function-list-average-l-that-computes-the-average-of-the-numbers-in-the-list-l" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">list_a</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">Lt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_a</span><span class="p">(</span><span class="n">Lt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="write-a-function-average-x1-xk-that-takes-an-arbitrary-number-of-arguments-but-at-least-one-and-computes-the-average-of-x1-xk">
+<h4>Write a function average(x1, …, xk) that takes an arbitrary number of arguments (but at least one) and computes the average of x1, …, xk.<a class="headerlink" href="#write-a-function-average-x1-xk-that-takes-an-arbitrary-number-of-arguments-but-at-least-one-and-computes-the-average-of-x1-xk" title="Permalink to this headline">#</a></h4>
+<p>Hint. Use a * to indicate an arbitrary argument list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">avv</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">list_a</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">Lt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">l2</span> <span class="o">=</span>  <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">avv</span><span class="p">(</span><span class="n">Lt</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -559,7 +730,7 @@ $ git commit
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./git"
+            path: "./pythonintro"
         },
         predefinedOutput: true
     }
@@ -573,17 +744,17 @@ $ git commit
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="python_introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Efficient Tricks and Tools for developer, Data Scientists and Statisticians</p>
+            <p class="prev-next-title">Python introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../object%20detection/object_detection.html" title="next page">
+    <a class='right-next' id="next-link" href="recursion.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Object detection</p>
+        <p class="prev-next-title">Python Recursion</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -167,27 +167,27 @@ t.add([1,1])
 
 # ## FRAGILE VALUES
 # 
-#     In this problem you should implement a class FragileValue, where
-#     each FragileValue object stores a nonnegative integer, e.g.
-#     FragileValue(42) should create an object storing the value 42.
-#     The class FragileValue should support the addition of two FragileValue
-#     objects, i.e. the + operator between two FragileValue objects, and
-#     printing a FragileValue, i.e. supporting str(x) where x is a
-#     FragileValue object.
+# In this problem you should implement a class FragileValue, where
+# each FragileValue object stores a nonnegative integer, e.g.
+# FragileValue(42) should create an object storing the value 42.
+# The class FragileValue should support the addition of two FragileValue
+# objects, i.e. the + operator between two FragileValue objects, and
+# printing a FragileValue, i.e. supporting str(x) where x is a
+# FragileValue object.
 #     
-#     Whenever str(x) is called on a FragileValue x, the value stored in the
-#     FragileValue is decreased by one before the value is returned as a
-#     string. Similarly, x + y should decrease the values of both x
-#     and y by one, before returning a FragileValue containing the sum of the
-#     new values of x and y. Note that print(FragileValue(5) + FragileValue(7))
-#     prints 9, since the addition first decreases the two FragileValues to
-#     4 and 6, respectively, before creating a new FragileValue storing 10.
-#     Printing this FragileValue first decreases its value to 9, before
-#     printing the string '9'.
+# Whenever str(x) is called on a FragileValue x, the value stored in the
+# FragileValue is decreased by one before the value is returned as a
+# string. Similarly, x + y should decrease the values of both x
+# and y by one, before returning a FragileValue containing the sum of the
+# new values of x and y. Note that print(FragileValue(5) + FragileValue(7))
+# prints 9, since the addition first decreases the two FragileValues to
+# 4 and 6, respectively, before creating a new FragileValue storing 10.
+# Printing this FragileValue first decreases its value to 9, before
+# printing the string '9'.
 #     
-#     If a FragileValue stores the value zero before calling str on it, or
-#     before adding it with another FagileValue value, a BrokenValue exception
-#     should be raised.
+# If a FragileValue stores the value zero before calling str on it, or
+# before adding it with another FagileValue value, a BrokenValue exception
+# should be raised.
 # 
 #     Input:  Multiple lines of Python code using the class FragileValue.
 #             The last line should start with '#eof' (indicating end of file).
@@ -214,3 +214,10 @@ t.add([1,1])
 #     Note: The below code already handles reading input, executing the input,
 #           and handling a raised BrokenValue exception.
 # 
+
+# In[ ]:
+
+
+class BrokenValue(Exception):
+    pass
+

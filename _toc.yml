@@ -34,7 +34,7 @@ chapters:
 - file: R tips/Intro.md
   sections:
   - file: R tips/keyring.md
-- file: powerbi/powerintro.md
+- file: BI tools/powerintro.md
 - file: pytorch/pytorchintro.md
   sections:
     - file: pytorch/Learning Pytorch.ipynb

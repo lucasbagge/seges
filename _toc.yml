@@ -16,7 +16,7 @@ chapters:
 - file: Mlops/mlops.md
   sections:
   - file: Mlops/airflow.ipynb
-- file: Data Science rols/Datarols.md
+- file: Data Science Roles/Datarols.md
   sections:
   - file: Data Science rols/data engineer.md
 - file: SQL/Introduction to SQL.md
@@ -35,4 +35,7 @@ chapters:
   sections:
   - file: R tips/keyring.md
 - file: powerbi/powerintro.md
-- file: ewii/case.md
+- file: pytorch/pytorchintro.md
+  sections:
+    - file: pytorch/Learning Pytorch.ipynb
+file:     

@@ -1,0 +1,1 @@
+# Power BI vs Qlik Sense

@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Data%20Science%20rols/Datarols.html">
+  <a class="reference internal" href="../Data%20Science%20Roles/Datarols.html">
    Data Science rols
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -176,12 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Data%20Science%20rols/data%20engineer.html">
-     Data Engineer
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -271,11 +266,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../powerbi/powerintro.html">
-   Power BI
-  </a>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="pytorchintro.html">
@@ -534,6 +524,45 @@ title="Print to PDF"
     </span>
    </code>
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-model">
+     Train model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traning-loop-for-optimize-parameter">
+     Traning loop for optimize parameter
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-model">
+     Save model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-2-neural-network-classification">
+   Chapter 2 – Neural Network Classification
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archeticure-of-nne">
+     Archeticure of NNE
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-data-ready">
+     1. Make Data ready
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -588,6 +617,45 @@ title="Print to PDF"
     </span>
    </code>
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-model">
+     Train model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traning-loop-for-optimize-parameter">
+     Traning loop for optimize parameter
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-model">
+     Save model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-2-neural-network-classification">
+   Chapter 2 – Neural Network Classification
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archeticure-of-nne">
+     Archeticure of NNE
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-data-ready">
+     1. Make Data ready
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -608,29 +676,16 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: nvidia-smi
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -680,9 +735,9 @@ vector af skalar
 vector af dimension 
  1
 random 
- tensor([[0.3094, 0.0622, 0.5677, 0.6994],
-        [0.1849, 0.3638, 0.4794, 0.6054],
-        [0.7730, 0.3827, 0.9984, 0.1653]])
+ tensor([[0.1813, 0.1204, 0.2746, 0.4132],
+        [0.7965, 0.1845, 0.8869, 0.0084],
+        [0.1840, 0.6270, 0.4742, 0.1094]])
 </pre></div>
 </div>
 </div>
@@ -712,43 +767,6 @@ random
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install matplotlib
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting matplotlib
-  Downloading matplotlib-3.6.1-cp39-cp39-macosx_10_12_x86_64.whl (7.3 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.3/7.3 MB</span> <span class=" -Color -Color-Red">35.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
-?25hCollecting fonttools&gt;=4.22.0
-  Downloading fonttools-4.38.0-py3-none-any.whl (965 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">965.4/965.4 kB</span> <span class=" -Color -Color-Red">37.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting cycler&gt;=0.10
-  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
-Requirement already satisfied: packaging&gt;=20.0 in /opt/anaconda3/envs/tf/lib/python3.9/site-packages (from matplotlib) (21.3)
-Collecting pillow&gt;=6.2.0
-  Downloading Pillow-9.3.0-cp39-cp39-macosx_10_10_x86_64.whl (3.3 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.3/3.3 MB</span> <span class=" -Color -Color-Red">46.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>a <span class=" -Color -Color-Cyan">0:00:01</span>
-?25hRequirement already satisfied: python-dateutil&gt;=2.7 in /opt/anaconda3/envs/tf/lib/python3.9/site-packages (from matplotlib) (2.8.2)
-Collecting kiwisolver&gt;=1.0.1
-  Using cached kiwisolver-1.4.4-cp39-cp39-macosx_10_9_x86_64.whl (65 kB)
-Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/anaconda3/envs/tf/lib/python3.9/site-packages (from matplotlib) (3.0.9)
-Collecting contourpy&gt;=1.0.1
-  Downloading contourpy-1.0.6-cp39-cp39-macosx_10_9_x86_64.whl (240 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">240.8/240.8 kB</span> <span class=" -Color -Color-Red">33.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: numpy&gt;=1.19 in /opt/anaconda3/envs/tf/lib/python3.9/site-packages (from matplotlib) (1.23.1)
-Requirement already satisfied: six&gt;=1.5 in /opt/anaconda3/envs/tf/lib/python3.9/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
-Installing collected packages: pillow, kiwisolver, fonttools, cycler, contourpy, matplotlib
-Successfully installed contourpy-1.0.6 cycler-0.11.0 fonttools-4.38.0 kiwisolver-1.4.4 matplotlib-3.6.1 pillow-9.3.0
-
-<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip available: <span class=" -Color -Color-Red">22.2</span> -&gt; <span class=" -Color -Color-Green">22.3</span>
-<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
 </pre></div>
 </div>
 </div>
@@ -867,7 +885,7 @@ Successfully installed contourpy-1.0.6 cycler-0.11.0 fonttools-4.38.0 kiwisolver
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Learning Pytorch_15_0.png" src="../_images/Learning Pytorch_15_0.png" />
+<img alt="../_images/Learning Pytorch_13_0.png" src="../_images/Learning Pytorch_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -910,7 +928,7 @@ Successfully installed contourpy-1.0.6 cycler-0.11.0 fonttools-4.38.0 kiwisolver
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-1.1229])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.8217])
 </pre></div>
 </div>
 </div>
@@ -1019,35 +1037,942 @@ Successfully installed contourpy-1.0.6 cycler-0.11.0 fonttools-4.38.0 kiwisolver
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_predictions</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">y_preds</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.8600],
-        [0.8740],
-        [0.8880],
-        [0.9020],
-        [0.9160],
-        [0.9300],
-        [0.9440],
-        [0.9580],
-        [0.9720],
-        [0.9860]])
+<img alt="../_images/Learning Pytorch_24_0.png" src="../_images/Learning Pytorch_24_0.png" />
+</div>
+</div>
+<section id="train-model">
+<h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">#</a></h2>
+<p>Mening er vi kommer til at kende de ukendte variabler.</p>
+<p>VI kan træner loss og optimizer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">model_0</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parameter containing:
+ tensor([0.3367], requires_grad=True),
+ Parameter containing:
+ tensor([0.1288], requires_grad=True)]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_predictions</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">y_preds</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Learning Pytorch_27_0.png" src="../_images/Learning Pytorch_27_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;weights&#39;, tensor([0.3367])), (&#39;bias&#39;, tensor([0.1288]))])
+</pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup loss</span>
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">L1Loss</span><span class="p">()</span>
+
+<span class="c1"># Setup optimizer</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">torch</span>
+    <span class="o">.</span><span class="n">optim</span>
+    <span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">params</span> <span class="o">=</span> <span class="n">model_0</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+                            <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span> <span class="c1"># Ændre på vægten men hvor deciamlen er den so ændres.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="traning-loop-for-optimize-parameter">
+<h2>Traning loop for optimize parameter<a class="headerlink" href="#traning-loop-for-optimize-parameter" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>loop thoug data</p></li>
+<li><p>forward pass also calle dforward propagation</p></li>
+<li><p>calculate loss (compar forward pass prediction to ground truth)</p></li>
+<li><p>optimize zero grad</p></li>
+<li><p>loss backward - move backward to calculat ethe gradients</p></li>
+<li><p>optimizer step - adjust paramrter</p></li>
+</ol>
+<ul class="simple">
+<li><p>E</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+
+
+<span class="c1"># loop though the data (because we set epochs ourselves it is a hyperparameter)</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="n">epochs_count</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">loss_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_loss_value</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 0. loop though data</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="c1"># Set the model to traning mode. Make sure that we update gradients. </span>
+    <span class="n">model_0</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    
+    <span class="c1"># 1. forwars</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model_0</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    
+    <span class="c1"># 2. loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loss:&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">loss</span><span class="p">})</span>
+    
+    <span class="c1"># 3. Optimize </span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="c1"># 4. Perform backpropagation</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    
+    <span class="c1"># 5. OPtimizer performance</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+    <span class="c1">### Testing</span>
+    <span class="n">model_0</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># Turn gradients off. Husk at gøre det når vi tester modellen. </span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span> <span class="c1"># Turns of gradients tracking and other things</span>
+        <span class="c1"># 1. forward pass</span>
+        <span class="n">test_pred</span> <span class="o">=</span> <span class="n">model_0</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="c1"># 2. Loss</span>
+        <span class="n">test_loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">test_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="c1"># 3. Optimize</span>
+        
+    <span class="c1"># Print out</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">40</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">epochs_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+        <span class="n">loss_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="n">test_loss_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_loss</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch:  </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1"> | Test </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s1"> | Test loss </span><span class="si">{</span><span class="n">test_loss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss: {tensor(0.3129, grad_fn=&lt;MeanBackward0&gt;)}
+Epoch:  0 | Test 0.31288138031959534 | Test loss 0.48106518387794495
+OrderedDict([(&#39;weights&#39;, tensor([0.3406])), (&#39;bias&#39;, tensor([0.1388]))])
+Loss: {tensor(0.3014, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2898, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2783, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2668, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2553, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2438, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2322, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2207, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.2092, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1977, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1862, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1746, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1631, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1516, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1401, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1285, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1170, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.1061, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0968, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0891, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0823, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0764, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0716, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0675, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0640, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0610, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0585, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0564, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0546, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0531, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0518, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0507, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0498, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0490, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0482, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0475, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0469, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0464, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0459, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0454, grad_fn=&lt;MeanBackward0&gt;)}
+Epoch:  40 | Test 0.04543796554207802 | Test loss 0.11360953003168106
+OrderedDict([(&#39;weights&#39;, tensor([0.4748])), (&#39;bias&#39;, tensor([0.3868]))])
+Loss: {tensor(0.0450, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0446, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0442, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0438, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0434, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0431, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0427, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0424, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0420, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0417, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0413, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0410, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0406, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0403, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0399, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0396, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0392, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0389, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0385, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0382, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0379, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0375, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0372, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0368, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0365, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0361, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0358, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0354, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0351, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0348, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0344, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0341, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0337, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0334, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0330, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0327, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0324, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0320, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0317, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0313, grad_fn=&lt;MeanBackward0&gt;)}
+Epoch:  80 | Test 0.03132382780313492 | Test loss 0.07232122868299484
+OrderedDict([(&#39;weights&#39;, tensor([0.5459])), (&#39;bias&#39;, tensor([0.3648]))])
+Loss: {tensor(0.0310, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0306, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0303, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0300, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0296, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0293, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0289, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0286, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0282, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0279, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0275, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0272, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0269, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0265, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0262, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0258, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0255, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0251, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0248, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0245, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0241, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0238, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0234, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0231, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0227, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0224, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0221, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0217, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0214, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0210, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0207, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0203, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0200, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0196, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0193, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0190, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0186, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0183, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0179, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0176, grad_fn=&lt;MeanBackward0&gt;)}
+Epoch:  120 | Test 0.01758546568453312 | Test loss 0.04060482233762741
+OrderedDict([(&#39;weights&#39;, tensor([0.6141])), (&#39;bias&#39;, tensor([0.3358]))])
+Loss: {tensor(0.0172, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0169, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0166, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0162, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0159, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0155, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0152, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0148, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0145, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0142, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0138, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0135, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0131, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0128, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0124, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0121, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0118, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0114, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0111, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0107, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0104, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0100, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0097, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0093, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0090, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0087, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0083, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0080, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0076, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0073, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0069, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0066, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0063, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0059, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0056, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0052, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0049, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0045, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0042, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0039, grad_fn=&lt;MeanBackward0&gt;)}
+Epoch:  160 | Test 0.0038517764769494534 | Test loss 0.008201557211577892
+OrderedDict([(&#39;weights&#39;, tensor([0.6826])), (&#39;bias&#39;, tensor([0.3073]))])
+Loss: {tensor(0.0035, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0032, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0028, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0025, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0021, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0018, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0015, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0012, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0089, grad_fn=&lt;MeanBackward0&gt;)}
+Loss: {tensor(0.0026, grad_fn=&lt;MeanBackward0&gt;)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span><span class="p">,</span> <span class="n">bias</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7, 0.3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[tensor(0.4811),
+ tensor(0.1136),
+ tensor(0.0723),
+ tensor(0.0406),
+ tensor(0.0082)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot loss</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_count</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">loss_values</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Train loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_count</span><span class="p">,</span> <span class="n">test_loss_value</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Test loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Train and Test loss curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Learning Pytorch_33_0.png" src="../_images/Learning Pytorch_33_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
+    <span class="n">y_preds_new</span> <span class="o">=</span> <span class="n">model_0</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_predictions</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">y_preds_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Learning Pytorch_35_0.png" src="../_images/Learning Pytorch_35_0.png" />
+</div>
+</div>
+</section>
+<section id="save-model">
+<h2>Save model<a class="headerlink" href="#save-model" title="Permalink to this headline">#</a></h2>
+<p>3 metoder til saving and loading models</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.save()</span></code> - save in pickle format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.load()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.nn.Module.load_stat_dict()</span></code> - load state dict</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Saves models output in a python dict. </span>
+<span class="n">model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;weights&#39;, tensor([0.6990])), (&#39;bias&#39;, tensor([0.3093]))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># 1. Lav folder til model</span>
+<span class="n">MODEL_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;models&#39;</span><span class="p">)</span>
+<span class="n">MODEL_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2. Lav model save path</span>
+<span class="n">MODEL_NAME</span> <span class="o">=</span> <span class="s1">&#39;01_pytorch_wf_model_0.pth&#39;</span>
+<span class="n">MODEL_SAVE_PATH</span> <span class="o">=</span> <span class="n">MODEL_PATH</span> <span class="o">/</span> <span class="n">MODEL_NAME</span>
+<span class="n">MODEL_SAVE_PATH</span>
+ 
+<span class="c1"># 3. Gem model state dict</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">obj</span> <span class="o">=</span> <span class="n">model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> 
+           <span class="n">f</span> <span class="o">=</span> <span class="n">MODEL_SAVE_PATH</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load </span>
+<span class="n">loaded_model_0</span> <span class="o">=</span> <span class="n">LinearRegressionModel</span><span class="p">()</span>
+
+<span class="c1"># Load state dict</span>
+<span class="n">loaded_model_0</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">MODEL_SAVE_PATH</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Load model with weight </span><span class="se">\n</span><span class="s1">: </span><span class="si">{</span><span class="n">loaded_model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Load model with weight 
+: OrderedDict([(&#39;weights&#39;, tensor([0.6990])), (&#39;bias&#39;, tensor([0.3093]))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions</span>
+
+<span class="n">loaded_model_0</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
+    <span class="n">y_pred_load_model_0</span> <span class="o">=</span> <span class="n">loaded_model_0</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">y_pred_load_model_0</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.8685],
+        [0.8825],
+        [0.8965],
+        [0.9105],
+        [0.9245],
+        [0.9384],
+        [0.9524],
+        [0.9664],
+        [0.9804],
+        [0.9944]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.13.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<p>Create device agnostic code.
+If GPU then we use it. This will do we get a faster computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;this is </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>this is cpu
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="chapter-2-neural-network-classification">
+<h1>Chapter 2 – Neural Network Classification<a class="headerlink" href="#chapter-2-neural-network-classification" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Imagenet: Famouse multi classification dataset.</p></li>
+<li><p>Batch size: 32 is a ideal choize. Measning if a classification look at a image it will look at 32 picture.</p></li>
+</ul>
+<section id="archeticure-of-nne">
+<h2>Archeticure of NNE<a class="headerlink" href="#archeticure-of-nne" title="Permalink to this headline">#</a></h2>
+<p>Input layer: Is number of features
+Hidden Layer: are math stages in the framework.
+Loss: Measure how wrong our model is.</p>
+</section>
+<section id="make-data-ready">
+<h2>1. Make Data ready<a class="headerlink" href="#make-data-ready" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_circles</span>
+
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_circles</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span>
+                    <span class="n">noise</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">,</span>
+                    <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 1000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">]),</span> <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.75424625  0.23148074]
+ [-0.75615888  0.15325888]
+ [-0.81539193  0.17328203]
+ [-0.39373073  0.69288277]
+ [ 0.44220765 -0.89672343]]
+[1 1 1 1 0]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(None, None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make DF with Pandas</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">circles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;X1&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> 
+                        <span class="s2">&quot;X2&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                       <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">y</span> <span class="p">})</span>
+<span class="n">circles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.754246</td>
+      <td>0.231481</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.756159</td>
+      <td>0.153259</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.815392</td>
+      <td>0.173282</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.393731</td>
+      <td>0.692883</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.442208</td>
+      <td>-0.896723</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>0.244054</td>
+      <td>0.944125</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>-0.978655</td>
+      <td>-0.272373</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>-0.136900</td>
+      <td>-0.810012</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>0.670362</td>
+      <td>-0.767502</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>0.281057</td>
+      <td>0.963824</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visual</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Learning Pytorch_49_0.png" src="../_images/Learning Pytorch_49_0.png" />
+</div>
+</div>
+<p>We want to differentiae between the two circles.</p>
+<ul class="simple">
+<li><p>Binary classification.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_sample</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_sample</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">X_sample</span><span class="p">,</span> <span class="n">y_sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.75424625, 0.23148074]), 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train and test</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[ 0.7542,  0.2315],
+         [-0.7562,  0.1533],
+         [-0.8154,  0.1733],
+         [-0.3937,  0.6929],
+         [ 0.4422, -0.8967]]),
+ tensor([1., 1., 1., 1., 0.]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.float32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> 
+                                                    <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800, 200)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span>
+<span class="n">device</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;cpu&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="c1">## Building model</span>
+
+<span class="k">class</span> <span class="nc">CircleModelsv0</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+    <span class="c1"># 2. Create 2 nn.Linear layer to handle shape</span>
+    <span class="c1">## The `out_features` need to have the same shap af y which is 1.</span>
+    <span class="c1">## nn.Linear transfor as acording to https://pytorch.org/docs/stable/generated/torch.nn.Linear.html</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1"># The second layer need to mach the out_features of first layer. </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Tak 5 feature and output 1 feature same shape as y</span>
+    
+    <span class="c1"># 3. define forward</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># x-&gt;layer_1 -&gt; layer_2 -&gt; output</span>
+    
+    <span class="c1"># 4. Instanit instance of model.</span>
+    
+<span class="n">model_0</span> <span class="o">=</span> <span class="n">CircleModelsv0</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model_0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CircleModelsv0(
+  (layer_1): Linear(in_features=2, out_features=5, bias=True)
+  (layer_2): Linear(in_features=5, out_features=1, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using nn.Sequential</span>
+
+<span class="c1">## Building model</span>
+
+<span class="k">class</span> <span class="nc">CircleModelsv0</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+    <span class="c1"># 2. Create 2 nn.Linear layer to handle shape</span>
+    <span class="c1">## The `out_features` need to have the same shap af y which is 1.</span>
+    <span class="c1">## nn.Linear transfor as acording to https://pytorch.org/docs/stable/generated/torch.nn.Linear.html</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1"># The second layer need to mach the out_features of first layer. </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Tak 5 feature and output 1 feature same shape as y</span>
+    
+    <span class="c1"># 3. define forward</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># x-&gt;layer_1 -&gt; layer_2 -&gt; output</span>
+    
+    <span class="c1"># 4. Instanit instance of model.</span>
+    
+<span class="n">model_0</span> <span class="o">=</span> <span class="n">CircleModelsv0</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model_0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CircleModelsv0(
+  (layer_1): Linear(in_features=2, out_features=5, bias=True)
+  (layer_2): Linear(in_features=5, out_features=1, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dont define forward like before. </span>
+<span class="n">mode_0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">mode_0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
+  (0): Linear(in_features=2, out_features=5, bias=True)
+  (1): Linear(in_features=5, out_features=1, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is esier but when more complex, then it is good we can build our own layers.</p>
+<p>A Sequential can be used inside class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_0</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;layer_1.weight&#39;,
+              tensor([[ 0.3821, -0.1701],
+                      [-0.2183, -0.4957],
+                      [ 0.2376,  0.3364],
+                      [ 0.4189, -0.5200],
+                      [ 0.4026, -0.3280]])),
+             (&#39;layer_1.bias&#39;,
+              tensor([0.5500, 0.1891, 0.4190, 0.0719, 0.4348])),
+             (&#39;layer_2.weight&#39;,
+              tensor([[ 0.1261, -0.2834, -0.4452, -0.4171,  0.2745]])),
+             (&#39;layer_2.bias&#39;, tensor([0.2700]))])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get weights now</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predictions</span>
+
+<span class="n">untrained_preds</span> <span class="o">=</span> <span class="n">model_0</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Length of pred: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">untrained_preds</span><span class="p">)</span><span class="si">}</span><span class="s1">, shape </span><span class="si">{</span><span class="n">untrained_preds</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of pred: 200, shape torch.Size([200, 1])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

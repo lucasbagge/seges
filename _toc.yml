@@ -24,6 +24,8 @@ chapters:
   - file: SQL/Explanatory Data Analysis in SQL.md
 - file: pythonintro/python_introduction.md
   sections:
+    - file: pythonintro/string.ipynb
+    - file: pythonintro/reshaping.ipynb
     - file: pythonintro/pythonintro.ipynb
     - file: pythonintro/recursion.ipynb
     - file: pythonintro/classes.ipynb
@@ -34,8 +36,6 @@ chapters:
 - file: R tips/Intro.md
   sections:
   - file: R tips/keyring.md
-- file: BI tools/powerintro.md
 - file: pytorch/pytorchintro.md
   sections:
     - file: pytorch/Learning Pytorch.ipynb
-file:     

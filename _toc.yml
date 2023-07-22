@@ -39,3 +39,6 @@ chapters:
 - file: pytorch/pytorchintro.md
   sections:
     - file: pytorch/Learning Pytorch.ipynb
+- file: Cases
+  sections:
+    - file: case 1.ipynb

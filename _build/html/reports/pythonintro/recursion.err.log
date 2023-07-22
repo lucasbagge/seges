@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+N = int(input("Antal dronninger der skal løses: \n"))
+chessboard = np.zeros([N,N],dtype=int)
+chessboard = chessboard.tolist()
+
+def possible(chessboard, row, col): # Først funktion til at se om problemet kan løses.
+    l=len(chessboard) # Tager hele længden af skakbrættet
+    for i in range(l): # Ser om der er nogle dronningenri rækken.
+        if chessboard[row][i]==1: # Hvis den findes så skal vi retuner falsk.
+            return False
+    for i in range(l):  # Ser om der er nogle dronninger i kolonnen.
+        if chessboard[i][col]==1: # Hvis der er en dronning retuner falsk.
+            return False
+    # Hvis ikke ovenstående er tilfældet, så går den videre.
+    for i in range(l): # Går gennem alle rækker.
+        for j in range(l): # Går gennem alle kolonner.
+            if chessboard[i][j]==1: # Ser om der er en dronning.
+                if abs(i - row) == abs(j - col): # Ser om der er en dronning i diagonalen
+                    return False 
+    return True 
+
+def solve(chessboard):
+    l=len(chessboard) # Længden som i forrig funktion.
+    for row in range(l): # Føtst for hver række.
+        for col in range(l): # Først for hver kolonne.
+            if chessboard[row][col] == 0: # Hvis der ingen dronning er kan vi indsætte 1.
+                if possible(chessboard, row, col): # Check om cellen er tom.
+                    chessboard[row][col] = 1 # Hvis den er tom kan vi indsætte 1.
+                    solve(chessboard) # Her kommer den rekursive løsning ind i billede.
+                    if sum(sum(a) for a in chessboard) == l: # Check om vi har nået alle mulige løsninger.
+                        return chessboard 
+                    chessboard[row][col] = 0 # Fjerner de tidliger dronninger
+    return chessboard #means we searched the space, we can return our result
+
+
+print(np.matrix(solve(chessboard)))
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
+[0;32m/var/folders/pk/f_w9xjw57l3_b9hlyplw1pym0000gn/T/ipykernel_2203/3127061850.py[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mN[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Antal dronninger der skal løses: \n"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mchessboard[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mzeros[0m[0;34m([0m[0;34m[[0m[0mN[0m[0;34m,[0m[0mN[0m[0;34m][0m[0;34m,[0m[0mdtype[0m[0;34m=[0m[0mint[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mchessboard[0m [0;34m=[0m [0mchessboard[0m[0;34m.[0m[0mtolist[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+
+[0;32m/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m   1172[0m         """
+[1;32m   1173[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1174[0;31m             raise StdinNotImplementedError(
+[0m[1;32m   1175[0m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1176[0m             )
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
+

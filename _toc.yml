@@ -39,3 +39,6 @@ chapters:
 - file: pytorch/pytorchintro.md
   sections:
     - file: pytorch/Learning Pytorch.ipynb
+- file: Databricks/Databricks introduction.md
+  sections:
+  - file: Building a lakehouse.md
